@@ -9,12 +9,15 @@ module.exports = {
     extend: {
       colors: {
         primary: "#A11215",
+        secondary: "#E3A314",
       },
       backgroundColor: {
         primary: "#A11215",
+        secondary: "#E3A314",
       },
       borderColor: {
         primary: "#A11215",
+        secondary: "#E3A314",
       }
     },
   },
