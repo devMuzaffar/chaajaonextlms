@@ -10,6 +10,6 @@ body {
 }
 
 .app{
-  @apply w-screen h-screen;
+  @apply w-screen;
 }
 
