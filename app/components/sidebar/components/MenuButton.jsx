@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ddMaterialButton,
   materialButton,
@@ -6,6 +5,7 @@ import {
 } from "../styles/materialButton";
 import { FaChevronRight } from "react-icons/fa";
 import { Button } from "@mui/material";
+import { useState } from "react";
 
 const MenuButton = ({
   text,
@@ -16,34 +16,60 @@ const MenuButton = ({
   dropDownItems,
   isSidebarHidden,
 }) => {
-  const styleCondition = isSelected ? materialButtonSelected : materialButton;
-  const variantCondition = isSelected ? "contained" : "text";
-  const iconCondition = isSelected ? "rotate-90" : "rotate-0";
-  const dropdownCondition = isSelected ? "overflow-y-hidden pt-0" : "pt-5";
+
+  // Selected Index for Dropdown Item
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
+  // state for show / hide Dropdown Menu
+  const [dropDownVisibility, setDropDownVisibility] = useState(false);
+
+  const styleCondition = isSelected && !hasDropDown ? materialButtonSelected : materialButton;
+  const shadowCondition = isSelected && !hasDropDown ? "!shadow-xl" : "";
+  const variantCondition = isSelected && !hasDropDown  ? "contained" : "text";
+  const iconCondition = isSelected && dropDownVisibility ? "rotate-90" : "rotate-0";
+  const dropdownCondition = isSelected ?  "h-36": "overflow-y-hidden h-0";
+
+
+  // Function that shows Bottom border only when parent isSelected & Selected Index === Index
+  const dropDownButtonCondition = (index) => isSelected ? (selectedIndex === index ? "border-[#e3a314] border-b-2" :  "border-b-2 border-transparent") : "border-b-2 border-transparent";
+
+  // Function that runs parent function + show/hide Dropdown Menu
+  const hideDropdown = () => {
+    onClick();
+    setDropDownVisibility(!dropDownVisibility);
+  }
+
+  const selectDropdownItem = (index) => {
+    // isSelected ? setSelectedIndex(index) : setSelectedIndex(null)
+    console.log(isSelected);
+  };
 
   return (
     <div className="px-2">
-      <Button sx={styleCondition} variant={variantCondition} onClick={onClick}>
+      <Button sx={styleCondition} variant={variantCondition} onClick={hideDropdown} className={shadowCondition}>
         <div className="flex items-center justify-between w-full">
           <div className="flex gap-3 items-center">
             {icon}
-            {isSidebarHidden != false && text}
+            {text}
           </div>
-          {isSidebarHidden && hasDropDown && (
+          {hasDropDown && (
             <FaChevronRight
               size={14}
-              className={`transition-all ${iconCondition}`}
+              className={`transition-all shadow-lg ${iconCondition}`}
             />
           )}
         </div>
       </Button>
 
-      {dropDownItems && (
-        <div className={`transition-all ${dropdownCondition}`}>
+{/* #e3a314 */}
+
+      {/* Dropdown Menu */}
+      {dropDownVisibility && dropDownItems && (
+        <div className={`transition-all flex flex-col justify-center ${dropdownCondition}`}>
           {dropDownItems.map((item, index) => (
-            <div key={index} className={`flex flex-col`}>
-              <Button sx={ddMaterialButton} variant="text">
-                {item}
+            <div key={index}>
+              <Button sx={ddMaterialButton} variant="text" onClick={() => { selectDropdownItem(index) }}>
+                <p className={dropDownButtonCondition(index)}>{item}</p>
               </Button>
             </div>
           ))}

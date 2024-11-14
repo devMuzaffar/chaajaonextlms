@@ -12,18 +12,20 @@ const Sidebar = () => {
     const sidebarCondition = !isHidden ? "w-1/5" : "w-1/4";
     const logoCondition = !isHidden ? "hidden" : "w-32";
 
+    // Changes Sidebar Position from Flex to Absolute
     const minimizeSidebar = () => setIsHidden(!isHidden);
 
   return (
-    <div className={`border-2 h-full border-white`}>
+    <div className={`border-2 h-full border-white w-80`}>
       {/* Red Sidebar */}
-      <div className="bg-primary text-white rounded-xl">
+      <div className="bg-sidebar text-white rounded-xl">
+        
         {/* Icon with hide button */}
-        <div className="flex items-center justify-evenly h-24">
+        <div className="flex items-center justify-center gap-6 pt-8 pb-4">
           {/* Icon */}
           <div className="flex items-center gap-3">
             <img className="w-8" src="./logo.png" alt="" />
-            <img className={`${logoCondition}`} src="./logo-text.png" alt="" />
+            <img className={`w-32`} src="./logo-text.png" alt="" />
           </div>
           <div onClick={minimizeSidebar}>
           <MdOutlineMenuOpen className="cursor-pointer" size={24} />

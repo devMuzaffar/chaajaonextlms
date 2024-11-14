@@ -15,6 +15,9 @@ module.exports = {
         primary: "#A11215",
         secondary: "#E3A314",
       },
+      backgroundImage: {
+        sidebar: "linear-gradient(to bottom, #A11215, #740709)",
+      },
       borderColor: {
         primary: "#A11215",
         secondary: "#E3A314",

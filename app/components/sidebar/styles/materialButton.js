@@ -9,11 +9,6 @@ export const materialButtonSelected = {
   textTransform: "none",
   fontSize: "0.875rem",
   lineHeight: "1.25rem",
-  boxShadow:
-    "var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);",
-  "&:hover": {
-    boxShadow: "none",
-  },
 };
 
 export const materialButton = {
@@ -28,7 +23,7 @@ export const materialButton = {
   lineHeight: "1.25rem",
   color: "white",
   "&:hover": {
-    backgroundColor: "#941113",
+    backgroundColor: "#8D0E10",
   },
 };
 
@@ -41,7 +36,7 @@ export const ddMaterialButton = {
   fontFamily: "poppins",
   textTransform: "none",
   justifyContent: "start",
-  padding: "10px 2.95rem",
+  padding: "12px 2.95rem",
   "&:hover": {
     color: "white",
     backgroundColor: "transparent",
