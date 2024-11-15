@@ -4,12 +4,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/*  */
+/* DEFAULT CONFIG */
+/*  */
+
+/* Hides Scrollbar on all Browsers */
+.hide-scrollbar::-webkit-scrollbar{
+  display: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 
 body {
   font-family: "Poppins";
 }
 
+/*  */
+/* COMPONENTS CONFIG */
+/*  */
+
 .app{
-  @apply w-screen;
+  @apply overflow-hidden;
 }
 

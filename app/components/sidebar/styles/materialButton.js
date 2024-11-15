@@ -1,3 +1,6 @@
+
+// Material Button Styling
+
 export const materialButtonSelected = {
   backgroundColor: "#e3a314",
   padding: "10px",
@@ -41,5 +44,27 @@ export const ddMaterialButton = {
     color: "white",
     backgroundColor: "transparent",
     fontWeight: "bold",
+  },
+};
+
+
+// Icon Button Styling
+
+export const materialIconSelected = {
+  backgroundColor: "#e3a314",
+  padding: "10px",
+  width: "100%",
+  borderRadius: "12px",
+  "&:hover": {
+    backgroundColor: "#e3a314",
+  }
+};
+
+export const materialIcon = {
+  padding: "10px",
+  width: "100%",
+  borderRadius: "12px",
+  "&:hover": {
+    backgroundColor: "#8D0E10",
   },
 };
