@@ -1,12 +1,17 @@
+"use client";
 import {
     Sidebar
 } from './components';
+import SidebarProvider from './context/SidebarContext';
+
+// Sidebar with Provider Wrapped
+const SideBar = () => <SidebarProvider><Sidebar /></SidebarProvider>;
 
 const App = () => {
   return (
     <div className='app flex'>
-        <Sidebar />
-        <div className='w-full border-2 border-red-500'>Dummy Block</div>
+        <SideBar />
+        <div className='flex-1 border-2 border-red-500'>Dummy Block</div>
     </div>
   )
 }

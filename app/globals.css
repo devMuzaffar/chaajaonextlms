@@ -24,6 +24,6 @@ body {
 /*  */
 
 .app{
-  @apply overflow-hidden;
+  @apply overflow-hidden w-screen;
 }
 

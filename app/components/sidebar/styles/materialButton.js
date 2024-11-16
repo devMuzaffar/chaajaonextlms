@@ -1,7 +1,5 @@
-
 // Material Button Styling
-
-export const materialButtonSelected = {
+export const buttonSelected = {
   backgroundColor: "#e3a314",
   padding: "10px",
   width: "100%",
@@ -12,9 +10,13 @@ export const materialButtonSelected = {
   textTransform: "none",
   fontSize: "0.875rem",
   lineHeight: "1.25rem",
+  minWidth: 'unset',
+
+  minWidth: '24px',
+  whiteSpace: "nowrap",
 };
 
-export const materialButton = {
+export const button = {
   padding: "10px",
   width: "100%",
   borderRadius: "12px",
@@ -28,9 +30,23 @@ export const materialButton = {
   "&:hover": {
     backgroundColor: "#8D0E10",
   },
+
+  minWidth: '24px',
+  whiteSpace: "nowrap",
 };
 
-export const ddMaterialButton = {
+// Icon-only Button
+export const iconSelected = {
+  backgroundColor: "#e3a314",
+  padding: "10px",
+  borderRadius: "12px",
+
+  minWidth: '24px',
+  whiteSpace: "nowrap",
+};
+
+// Dropdown button
+export const ddButton = {
   fontSize: "0.875rem",
   lineHeight: "1.25rem",
   color: "#DD9A9A",
@@ -44,27 +60,5 @@ export const ddMaterialButton = {
     color: "white",
     backgroundColor: "transparent",
     fontWeight: "bold",
-  },
-};
-
-
-// Icon Button Styling
-
-export const materialIconSelected = {
-  backgroundColor: "#e3a314",
-  padding: "10px",
-  width: "100%",
-  borderRadius: "12px",
-  "&:hover": {
-    backgroundColor: "#e3a314",
-  }
-};
-
-export const materialIcon = {
-  padding: "10px",
-  width: "100%",
-  borderRadius: "12px",
-  "&:hover": {
-    backgroundColor: "#8D0E10",
   },
 };

@@ -1,50 +1,57 @@
 "use client";
 import menuList from "./list/menuList";
 import MenuButton from "./components/menubutton/MenuButton";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MenuIcon from "./components/menuicon/MenuIcon";
+import { SidebarContext } from "@/app/context/SidebarContext";
 
 const Sidebar = () => {
+  // Global sidebar Hover Boolean will be true/false on Hover
+  const { isSidebarHover, setIsSidebarHover } = useContext(SidebarContext);
+
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isSidebarHidden, setIsSidebarHidden] = useState(true);
+  const [isSidebarFixed, setIsSidebarFixed] = useState(false);
 
-  const sidebarCondition = !isSidebarHidden ? "w-1/5" : "w-1/4";
-  const logoCondition = !isSidebarHidden ? "hidden" : "w-32";
-
-  let sidebarMinimizedWidth;
-  // w-[260px]
-  const sidebarPosition = isSidebarHidden ? "fixed left-0 top-0 w-fit" : "flex flex-col w-80";
+  // w-260px
+  let sidebarMinimizedWidth = isSidebarHover ? "w-64" : "w-16";
+  const sidebarPosition = isSidebarFixed
+    ? `fixed left-0 top-0 ${sidebarMinimizedWidth}`
+    : "flex flex-col w-64";
+    // w-[315px]
 
   // Changes Sidebar Position from Block to Fixed
-  const toggleMinimizeSidebar = () => {
-    setIsSidebarHidden(!isSidebarHidden);
+  const toggleFixedSidebar = () => {
+    setIsSidebarFixed(!isSidebarFixed);
   };
 
-  // Expands Minimized Sidebar
-  // Works only when Sidebar is Minimized
-  const expandMinimizeSidebar = () => {
-    if(isSidebarHidden){
+  // Minimizes Fixed Sidebar on Hover out
+  const toggleMinimizeSidebar = () => {
+    isSidebarFixed && setIsSidebarHover(false);
+  };
 
-
-    }
-  }
+  // Maximizes Fixed Sidebar on Hover In
+  const toggleMaximizeSidebar = () => {
+    isSidebarFixed && setIsSidebarHover(true);
+  };
 
   return (
     <div
-      className={`border-2 h-screen border-white overflow-y-hidden ${sidebarPosition}`}
-      onMouseEnter={expandMinimizeSidebar}
+      className={`transition-all border-2 h-screen border-white overflow-y-hidden ${sidebarPosition}`}
+      onMouseLeave={toggleMinimizeSidebar}
+      onMouseEnter={toggleMaximizeSidebar}
     >
       {/* Red Sidebar */}
       <div className="bg-sidebar text-white rounded-xl h-full flex flex-col">
-
         {/* Icon with hide button */}
         <div className="flex items-center justify-center gap-6 pt-8 pb-4">
           {/* Icon */}
           <div className="flex items-center gap-3">
             <img className="w-8" src="./logo.png" alt="" />
-            {/* <img className={`w-32`} src="./logo-text.png" alt="" /> */}
+            {isSidebarHover && (
+              <img className={`w-32`} src="./logo-text.png" alt="" />
+            )}
           </div>
-          {/* <MenuIcon onClick={toggleMinimizeSidebar}/> */}
+          {isSidebarHover && <MenuIcon onClick={toggleFixedSidebar} />}
         </div>
 
         {/* Menu List */}
@@ -60,13 +67,11 @@ const Sidebar = () => {
                 setSelectedIndex(index);
               }}
               hasDropDown={index === 1 || index === 8}
-              dropDownItems={selectedIndex === index ? dropdown : []}
-              isSidebarMinimized={isSidebarHidden}
+              dropdownItems={selectedIndex === index ? dropdown : []}
+              isSidebarFixed={false}
             />
           ))}
-        
         </div>
-        
       </div>
     </div>
   );
