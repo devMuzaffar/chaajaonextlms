@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { ddMaterialButton } from "../../../styles/materialButton";
+import { ddButton } from "../../../styles/materialButton";
 import { useState } from "react";
 
 const DropdownMenu = ({ isSelected, dropdownCondition, dropdownItems }) => {
@@ -27,7 +27,7 @@ const DropdownMenu = ({ isSelected, dropdownCondition, dropdownItems }) => {
       {dropdownItems.map((item, index) => (
         <div key={index}>
           <Button
-            sx={ddMaterialButton}
+            sx={ddButton}
             variant="text"
             onClick={() => {
               selectDropdownItem(index);

@@ -2,15 +2,25 @@ import { createContext, useState } from "react";
 
 export const SidebarContext = createContext();
 
-const SidebarProvider = ({children}) => {
+const SidebarProvider = ({ children }) => {
+  const [isSidebarHover, setIsSidebarHover] = useState(true);
+  const [isSidebarFixed, setIsSidebarFixed] = useState(false);
+  const [isMobileSidebar, setIsMobileSidebar] = useState(false);
 
-    const [isSidebarHover, setIsSidebarHover] = useState(true);
-
-    return (
-    <SidebarContext.Provider value={{isSidebarHover, setIsSidebarHover}}>
-        {children}
+  return (
+    <SidebarContext.Provider
+      value={{
+        isSidebarHover,
+        setIsSidebarHover,
+        isSidebarFixed,
+        setIsSidebarFixed,
+        isMobileSidebar,
+        setIsMobileSidebar
+      }}
+    >
+      {children}
     </SidebarContext.Provider>
-    )
-}
+  );
+};
 
 export default SidebarProvider;

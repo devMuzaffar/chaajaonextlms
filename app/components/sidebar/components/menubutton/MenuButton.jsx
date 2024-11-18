@@ -17,14 +17,18 @@ const MenuButton = ({
   dropdownItems,
   isSidebarFixed,
 }) => {
-
   // Sidebar Hover Context
   const { isSidebarHover } = useContext(SidebarContext);
 
   // state for show / hide Dropdown Menu
   const [dropDownVisibility, setDropDownVisibility] = useState(false);
 
-  const styleCondition = isSelected && !hasDropDown ? (isSidebarHover ? buttonSelected : iconSelected) : button;
+  const styleCondition =
+    isSelected && !hasDropDown
+      ? isSidebarHover
+        ? buttonSelected
+        : iconSelected
+      : button;
   const shadowCondition = isSelected && !hasDropDown ? "!shadow-xl" : "";
   const variantCondition = isSelected && !hasDropDown ? "contained" : "text";
   const iconCondition =

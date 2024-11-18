@@ -8,12 +8,13 @@ export const buttonSelected = {
   alignItems: "center",
   fontFamily: "poppins",
   textTransform: "none",
-  fontSize: "0.875rem",
-  lineHeight: "1.25rem",
-  minWidth: 'unset',
+  fontSize: "14px",
+  lineHeight: "20px",
 
   minWidth: '24px',
   whiteSpace: "nowrap",
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
 };
 
 export const button = {
@@ -24,8 +25,8 @@ export const button = {
   alignItems: "center",
   fontFamily: "poppins",
   textTransform: "none",
-  fontSize: "0.875rem",
-  lineHeight: "1.25rem",
+  fontSize: "14px",
+  lineHeight: "20px",
   color: "white",
   "&:hover": {
     backgroundColor: "#8D0E10",
@@ -33,6 +34,8 @@ export const button = {
 
   minWidth: '24px',
   whiteSpace: "nowrap",
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
 };
 
 // Icon-only Button
@@ -40,15 +43,16 @@ export const iconSelected = {
   backgroundColor: "#e3a314",
   padding: "10px",
   borderRadius: "12px",
-
   minWidth: '24px',
   whiteSpace: "nowrap",
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
 };
 
 // Dropdown button
 export const ddButton = {
-  fontSize: "0.875rem",
-  lineHeight: "1.25rem",
+  fontSize: "14px",
+  lineHeight: "20px",
   color: "#DD9A9A",
   padding: "none",
   textDecoration: "none",

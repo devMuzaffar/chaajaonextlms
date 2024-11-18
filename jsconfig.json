@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES6",
     "paths": {
       "@/*": ["./*"]
     }

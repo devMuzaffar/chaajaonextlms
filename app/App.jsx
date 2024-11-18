@@ -9,9 +9,9 @@ const SideBar = () => <SidebarProvider><Sidebar /></SidebarProvider>;
 
 const App = () => {
   return (
-    <div className='app flex'>
+    <div className='app flex relative'>
         <SideBar />
-        <div className='flex-1 border-2 border-red-500'>Dummy Block</div>
+        <div className='flex-1 border-2 bg-white border-red-500'>Dummy Block</div>
     </div>
   )
 }

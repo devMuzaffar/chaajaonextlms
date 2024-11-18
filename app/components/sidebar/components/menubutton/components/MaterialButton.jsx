@@ -15,21 +15,18 @@ const MaterialButton = ({
   className,
   icon,
   text,
-  isSidebarFixed,
   hasDropDown,
   iconCondition,
 }) => {
-
-    // Sidebar Hover Context
-    const { isSidebarHover } = useContext(SidebarContext);
+  // Sidebar Hover Context
+  const { isSidebarHover } = useContext(SidebarContext);
 
   return (
     <Button sx={sx} variant={variant} onClick={onClick} className={className}>
       <div className="flex items-center justify-between w-full">
         <div className="flex gap-3 items-center">
-          <img className="w-6 object-contain" src={icon} />
+          <img className="w-5 h-5 object-contain object-left" src={icon} />
           {isSidebarHover && text}
-          {/* {text} */}
         </div>
         {isSidebarHover && hasDropDown && (
           <FaChevronRight
@@ -43,7 +40,3 @@ const MaterialButton = ({
 };
 
 export default MaterialButton;
-
-
-// TODO: CHANGE TEXT TO BE HIDDEN OVERFLOW, REMOVE WRAP
-// TODO: ANALYZE BROKEN ANIMATION COMING FROM HOVER FROM ICON TO ICON+TEXT
