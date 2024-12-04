@@ -12,10 +12,9 @@ const AppLayout = ({ children }) => {
 
         <div className="flex-1 bg-contentbg border-2 border-red-500">
           <Header />
-          
+
           {/* Dynamic Pages */}
           {children}
-
         </div>
       </SidebarProvider>
     </div>
