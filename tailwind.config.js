@@ -12,6 +12,7 @@ module.exports = {
         secondary: "#E3A314",
       },
       backgroundColor: {
+        contentbg: "#F1F4FB",
         primary: "#A11215",
         secondary: "#E3A314",
       },
@@ -21,6 +22,9 @@ module.exports = {
       borderColor: {
         primary: "#A11215",
         secondary: "#E3A314",
+      },
+      boxShadow: {
+        headerbutton: "2px 2px 8px 0px rgba(31, 38, 71, 0.08)",
       }
     },
   },

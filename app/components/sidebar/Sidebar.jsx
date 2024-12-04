@@ -13,23 +13,30 @@ const Sidebar = () => {
     setIsSidebarHover,
     isSidebarFixed,
     isMobileSidebar,
-    setIsMobileSidebar
+    setIsMobileSidebar,
   } = useContext(SidebarContext);
 
+  // State for Selecting Index button
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  // Custom Hook variable for current viewport width
   const currentWidth = useViewportWidth();
 
+  // Automatically hides sidebar on mobile if desktop's sidebar is minimized
   const isMobileWidth = currentWidth < 1024;
 
-  let sidebarMinimizedWidth = isSidebarHover ? "w-64" : "w-16";
+  // Minimize Sidebar if sidebar is float, and Hovered or not
+  let sidebarMinimizedWidth = isSidebarHover
+    ? "transition-all w-64"
+    : "transition-all w-16";
 
+  // Changes the Sidebar postition on button Click
   const sidebarPosition = isSidebarFixed
     ? `fixed left-0 top-0 ${sidebarMinimizedWidth}`
     : "block w-64";
 
   const mobileSidebarCondition = isMobileSidebar ? "-left-64" : "left-0";
-  const mobileSidebarPosition = `absolute w-64 ${mobileSidebarCondition}`;
+  const mobileSidebarPosition = `transition-all absolute w-64 ${mobileSidebarCondition}`;
 
   //
   // Methods
@@ -51,23 +58,34 @@ const Sidebar = () => {
     isSidebarFixed && setIsSidebarHover(true);
   };
 
+  // Hides Sidebar on clicking Dark Bg on Mobile
   const hideMobileSidebar = (e) => {
     e.stopPropagation();
-    setIsMobileSidebar(!isMobileSidebar);
-  }
+    setIsMobileSidebar(true);
+  };
 
-  const parentDiv = `transition-all duration-300 absolute w-full inset-0 bg-opacity-50 lg:bg-transparent lg:static lg:w-auto ${isMobileSidebar ? "bg-transparent": "bg-black"}`;
+  const parentDiv = `transition-all z-10 duration-300 absolute w-full inset-0 bg-opacity-50 lg:bg-transparent lg:static lg:w-auto ${
+    isMobileSidebar ? "bg-transparent pointer-events-none" : "bg-black"
+  }`;
 
   return (
     <div className={`${parentDiv} `} onClick={(e) => hideMobileSidebar(e)}>
       <div
-        className={`h-screen border-none border-white overflow-y-hidden shadow-2xl lg:shadow-none ${isMobileWidth ? mobileSidebarPosition : sidebarPosition}
+        className={`h-screen border-none border-white overflow-y-hidden shadow-2xl lg:shadow-none ${
+          isMobileWidth ? mobileSidebarPosition : sidebarPosition
+        }
       `}
         onMouseLeave={toggleMinimizeSidebar}
         onMouseEnter={toggleMaximizeSidebar}
       >
         {/* Red Sidebar */}
-        <div className="bg-sidebar text-white h-full flex flex-col lg:border-2 lg:rounded-xl">
+        {/* With Thin white border */}
+        <div
+          className="bg-sidebar text-white h-full flex flex-col lg:border-2 lg:rounded-xl"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
           {/* Logo with hide button */}
           <SidebarHeader />
 
@@ -96,8 +114,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-
-// TODO: Stop propagation of most parent Div
-// TODO: Fix Animation not wokring on absolute mobile sidebar of Left position
-// Adjust Responsiveness of sidebar on mobile and tablet
