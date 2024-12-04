@@ -65,7 +65,7 @@ const Sidebar = () => {
   };
 
   const parentDiv = `transition-all z-10 duration-300 absolute w-full inset-0 bg-opacity-50 lg:bg-transparent lg:static lg:w-auto ${
-    isMobileSidebar ? "bg-transparent pointer-events-none" : "bg-black"
+    isMobileSidebar ? "bg-transparent pointer-events-none" : "bg-black pointer-events-auto"
   }`;
 
   return (

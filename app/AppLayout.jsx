@@ -6,15 +6,16 @@ import SidebarProvider from "./context/SidebarContext";
 
 const AppLayout = ({ children }) => {
   return (
-    <div className="app flex relative">
+    <div className="app flex justify-end relative bg-contentbg">
       <SidebarProvider>
         <Sidebar />
 
-        <div className="flex-1 bg-contentbg border-2 border-red-500">
+        <div className="w-full md:w-[calc(100vw-5vw)]">
           <Header />
 
           {/* Dynamic Pages */}
           {children}
+
         </div>
       </SidebarProvider>
     </div>
