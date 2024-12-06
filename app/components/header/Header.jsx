@@ -85,7 +85,11 @@ const Header = () => {
             />
 
             {/* Counselor dropdown Menu */}
-            <DropdownMenu list={counselorList} isOpen={isButtonOpen} />
+            <DropdownMenu
+              list={counselorList}
+              isOpen={isButtonOpen}
+              className="w-full"
+            />
           </div>
         </div>
       </div>

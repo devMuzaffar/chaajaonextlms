@@ -12,7 +12,7 @@ const DropdownMenu = ({ list, isOpen, className }) => {
           animate={motionEnd}
           exit={motionInitial}
           transition={{ duration: 0.1 }}
-          className={`absolute transition-all bg-white my-1 py-2 rounded-xl shadow-lg shadow-gray-400 w-full ${className}`}
+          className={`absolute transition-all bg-white my-1 py-2 rounded-xl shadow-lg shadow-gray-400 ${className}`}
         >
           {/* Item */}
           {list.map((item, index) => (

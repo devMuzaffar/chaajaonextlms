@@ -10,7 +10,7 @@ const AppLayout = ({ children }) => {
       <SidebarProvider>
         <Sidebar />
 
-        <div className="w-full md:w-[calc(100vw-5vw)]">
+        <div className="w-full md:w-[calc(100vw-5vw)] overflow-y-auto">
           <Header />
 
           {/* Dynamic Pages */}
