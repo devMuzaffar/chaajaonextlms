@@ -3,7 +3,6 @@ import { Block1, Block2, Block3, Block4, BottomLinks } from "./home";
 const HomePage = () => {
   return (
     <div className="grid grid-cols-1 gap-4 px-4 py-10 md:grid-cols-2">
-
       {/* Practice Zone Block */}
       <Block1 />
 
@@ -18,7 +17,6 @@ const HomePage = () => {
 
       {/* Links Block */}
       <BottomLinks />
-      
     </div>
   );
 };

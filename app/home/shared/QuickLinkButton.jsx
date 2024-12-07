@@ -1,7 +1,6 @@
 import { FaArrowRight } from "react-icons/fa6";
 
 const QuickLinkButton = ({
-  key,
   icon,
   text,
   desc,
@@ -12,7 +11,6 @@ const QuickLinkButton = ({
 }) => {
   return (
     <div
-      key={key}
       className={`cursor-pointer bg-white rounded-lg shadow-sm shadow-gray-300 flex items-center justify-between px-4 py-3 w-full ${className}`}
     >
       {/* Icon & Text Block */}

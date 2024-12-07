@@ -2,7 +2,7 @@
 import { Sidebar, Header } from "./components";
 import SidebarProvider from "./context/SidebarContext";
 
-// SidebarProvider for Show/Hide sidebar from both Sidebar & Header Component
+// <SidebarProvider> for Show/Hide sidebar from both Sidebar & Header Component
 
 const AppLayout = ({ children }) => {
   return (

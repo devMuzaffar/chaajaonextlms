@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { SidebarContext } from "@/app/context/SidebarContext";
 import SidebarHeader from "./components/sidebarheader/SidebarHeader";
 import useViewportWidth from "./hooks/useViewportWidth";
+import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
   // Global sidebar Hover Boolean will be true/false on Hover
@@ -18,6 +19,7 @@ const Sidebar = () => {
 
   // State for Selecting Index button
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const router = useRouter();
 
   // Custom Hook variable for current viewport width
   const currentWidth = useViewportWidth();
@@ -64,6 +66,19 @@ const Sidebar = () => {
     setIsMobileSidebar(true);
   };
 
+  // Handle Navigation Function
+  const handleNavigation = (index) => {
+
+    setSelectedIndex(index);
+
+    switch(index){
+      case 0: router.push('/'); break;
+      case 3: router.push('/news-ads'); break;
+      default: router.push('/');
+    }
+
+  }
+
   const parentDiv = `transition-all z-10 duration-300 absolute w-full inset-0 bg-opacity-50 lg:bg-transparent lg:static lg:w-auto ${
     isMobileSidebar ? "bg-transparent pointer-events-none" : "bg-black pointer-events-auto"
   }`;
@@ -98,9 +113,7 @@ const Sidebar = () => {
                 icon={icon}
                 text={text}
                 isSelected={selectedIndex === index}
-                onClick={() => {
-                  setSelectedIndex(index);
-                }}
+                onClick={() => { handleNavigation(index) }}
                 hasDropDown={index === 1 || index === 8}
                 dropdownItems={selectedIndex === index ? dropdown : []}
                 isSidebarFixed={false}
