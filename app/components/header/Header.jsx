@@ -72,14 +72,14 @@ const Header = () => {
           {/* Share with friends */}
           <Button
             className={"hidden sm:flex"}
-            imgSrc={"./header/share.svg"}
+            imgSrc={"./assets/header/share.svg"}
             text={"Share with friends"}
           />
 
           {/* Talk to Counselor */}
           <div className="relative select-none">
             <Button
-              imgSrc={"./header/counselor.svg"}
+              imgSrc={"./assets/header/counselor.svg"}
               text={"Talk to counselor"}
               onClick={openButtonMenu}
             />
