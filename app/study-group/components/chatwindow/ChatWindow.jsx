@@ -3,9 +3,10 @@ import ChatHeader from "../chatheader/ChatHeader";
 
 const ChatWindow = () => {
   return (
-    <div className="h-[calc(100vh-18vh)] border-2 rounded-xl overflow-hidden w-full bg-white flex">
+    <div className="h-[calc(100vh-18vh)] rounded-xl overflow-hidden w-full bg-white flex">
+
       {/* Profile People Section */}
-      <div className="flex-[2]">
+      <div className="flex-[2] hidden md:block">
         {/* Profile Header */}
         <ChatHeader />
 
@@ -14,12 +15,14 @@ const ChatWindow = () => {
       </div>
 
       {/* Chat Body Section */}
-      <div className="bg-chat relative flex-[4] flex items-center justify-center">
+      <div id="chat-body" className="bg-chat relative flex-[4] flex items-center justify-center">
         <div className="bg-chat-shade absolute inset-0 w-full h-full" />
 
         {/* Rounded Chat App with Text */}
         <BodyIntro />
+
       </div>
+
     </div>
   );
 };

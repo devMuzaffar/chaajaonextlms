@@ -57,7 +57,8 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between pt-4 px-2">
+    <div className="flex justify-between pt-4 px-2 pb-1">
+      
       {/* Left */}
       {/* Show Sidebar: Mobile */}
       {/* Buttons */}

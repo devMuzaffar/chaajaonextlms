@@ -9,7 +9,7 @@ const ChatHeader = () => {
   const handleProfileMenu = () => {};
 
   return (
-    <div className="flex flex-col gap-6 bg-[#F5F5F5] p-3">
+    <div className="flex flex-col gap-6 bg-[#F5F5F5] p-3 w-80 md:w-full">
       {/* Profile & Three-dot Menu */}
       <div className="flex items-center justify-between">
         <div

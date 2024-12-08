@@ -5,7 +5,8 @@ import { useContext, useEffect, useState } from "react";
 import { SidebarContext } from "@/app/context/SidebarContext";
 import SidebarHeader from "./components/sidebarheader/SidebarHeader";
 import useViewportWidth from "./hooks/useViewportWidth";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import pathList from "./list/pathlist";
 
 const Sidebar = () => {
   // Global sidebar Hover Boolean will be true/false on Hover
@@ -20,6 +21,7 @@ const Sidebar = () => {
   // State for Selecting Index button
   const [selectedIndex, setSelectedIndex] = useState(0);
   const router = useRouter();
+  const pathname = usePathname();
 
   // Custom Hook variable for current viewport width
   const currentWidth = useViewportWidth();
@@ -50,11 +52,13 @@ const Sidebar = () => {
     currentWidth > 1280 && isSidebarFixed ? "" : setIsSidebarHover(true);
   }, [currentWidth]);
 
+  // UseEffect to persist selected Index path even when page refreshed
   useEffect(() => {
-
-    console.log(router.asPath);
-
-  },[])
+    if (pathList.includes(pathname)) {
+      const pathIndex = pathList.indexOf(pathname);
+      setSelectedIndex(pathIndex);
+    }
+  }, [pathname]);
 
   // Minimizes Fixed Sidebar on Hover out
   const toggleMinimizeSidebar = () => {
@@ -74,20 +78,27 @@ const Sidebar = () => {
 
   // Handle Navigation Function
   const handleNavigation = (index) => {
-
     setSelectedIndex(index);
 
-    switch(index){
-      case 0: router.push('/'); break;
-      case 2: router.push('/study-group'); break;
-      case 3: router.push('/news-ads'); break;
-      default: router.push('/');
+    switch (index) {
+      case 0:
+        router.push("/");
+        break;
+      case 2:
+        router.push("/study-group");
+        break;
+      case 3:
+        router.push("/news-ads");
+        break;
+      default:
+        router.push("/");
     }
-
-  }
+  };
 
   const parentDiv = `transition-all z-10 duration-300 absolute w-full inset-0 bg-opacity-50 lg:bg-transparent lg:static lg:w-auto ${
-    isMobileSidebar ? "bg-transparent pointer-events-none" : "bg-black pointer-events-auto"
+    isMobileSidebar
+      ? "bg-transparent pointer-events-none"
+      : "bg-black pointer-events-auto"
   }`;
 
   return (
@@ -120,7 +131,9 @@ const Sidebar = () => {
                 icon={icon}
                 text={text}
                 isSelected={selectedIndex === index}
-                onClick={() => { handleNavigation(index) }}
+                onClick={() => {
+                  handleNavigation(index);
+                }}
                 hasDropDown={index === 1 || index === 8}
                 dropdownItems={selectedIndex === index ? dropdown : []}
                 isSidebarFixed={false}
