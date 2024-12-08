@@ -2,8 +2,16 @@
 import Drawer from "@mui/material/Drawer";
 import ChatHeader from "../../chatheader/ChatHeader";
 import { Box } from "@/node_modules/@mui/material/index";
+import { useEffect, useState } from "react";
 
 const MobileDrawer = ({ open, setOpen }) => {
+  const [container, setContainer] = useState(null);
+
+  useEffect(() => {
+    setContainer(document.getElementById('chat-body'));
+  }, []);
+
+
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
@@ -14,7 +22,7 @@ const MobileDrawer = ({ open, setOpen }) => {
         open={open}
         onClose={toggleDrawer(false)}
         PaperProps={{
-          container: document.getElementById('chat-body'),
+          container: container,
           style: {
             position: 'absolute',
             maxWidth: 'initial',
@@ -25,9 +33,9 @@ const MobileDrawer = ({ open, setOpen }) => {
           }
         }}
         ModalProps={{
-          container: document.getElementById('chat-body'),
+          container: container,
           disableEnforceFocus: true,
-          style: { position: 'absolute', zIndex: 0, }
+          style: { position: 'absolute', zIndex: 0 }
         }}
         BackdropProps={{
           style: {
