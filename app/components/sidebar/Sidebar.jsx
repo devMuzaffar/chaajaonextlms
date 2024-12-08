@@ -50,6 +50,12 @@ const Sidebar = () => {
     currentWidth > 1280 && isSidebarFixed ? "" : setIsSidebarHover(true);
   }, [currentWidth]);
 
+  useEffect(() => {
+
+    console.log(router.asPath);
+
+  },[])
+
   // Minimizes Fixed Sidebar on Hover out
   const toggleMinimizeSidebar = () => {
     isSidebarFixed && setIsSidebarHover(false);
@@ -73,6 +79,7 @@ const Sidebar = () => {
 
     switch(index){
       case 0: router.push('/'); break;
+      case 2: router.push('/study-group'); break;
       case 3: router.push('/news-ads'); break;
       default: router.push('/');
     }
