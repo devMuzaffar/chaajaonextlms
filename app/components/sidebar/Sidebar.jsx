@@ -52,11 +52,14 @@ const Sidebar = () => {
     currentWidth > 1280 && isSidebarFixed ? "" : setIsSidebarHover(true);
   }, [currentWidth]);
 
-  // UseEffect to persist selected Index path even when page refreshed
+  // UseEffect to persist selectedIndex path even when page is refreshed
   useEffect(() => {
     if (pathList.includes(pathname)) {
       const pathIndex = pathList.indexOf(pathname);
       setSelectedIndex(pathIndex);
+    }
+    else{
+      setSelectedIndex(null);
     }
   }, [pathname]);
 
@@ -78,23 +81,49 @@ const Sidebar = () => {
 
   // Handle Navigation Function
   const handleNavigation = (index) => {
-    setSelectedIndex(index);
+    
+    const selectIndex = setSelectedIndex(index);
 
     switch (index) {
       case 0:
+        selectIndex;
         router.push("/");
         break;
       case 2:
+        selectIndex;
         router.push("/study-group");
         break;
       case 3:
+        selectIndex;
         router.push("/news-ads");
         break;
+      case 4:
+        selectIndex;
+        router.push("/change-course");
+        break;
+      case 5:
+        selectIndex;
+        router.push("/bookmarks");
+        break;
+      case 6:
+        selectIndex;
+        router.push("/personal-notes");
+        break;
+      case 7:
+        selectIndex;
+        router.push("/analytics");
+        break;
+      case 8:
+        selectIndex;
+        // For Support
+      break;
       default:
+        selectIndex;
         router.push("/");
     }
   };
 
+  // CSS for Most Parent Div
   const parentDiv = `transition-all z-10 duration-300 absolute w-full inset-0 bg-opacity-50 lg:bg-transparent lg:static lg:w-auto ${
     isMobileSidebar
       ? "bg-transparent pointer-events-none"

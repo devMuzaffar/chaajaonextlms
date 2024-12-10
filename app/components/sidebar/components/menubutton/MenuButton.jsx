@@ -29,6 +29,8 @@ const MenuButton = ({
         ? buttonSelected
         : iconSelected
       : button;
+
+  // CSS Conditions
   const shadowCondition = isSelected && !hasDropDown ? "!shadow-xl" : "";
   const variantCondition = isSelected && !hasDropDown ? "contained" : "text";
   const iconCondition =

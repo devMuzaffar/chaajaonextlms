@@ -11,10 +11,10 @@ export const buttonSelected = {
   fontSize: "14px",
   lineHeight: "20px",
 
-  minWidth: '24px',
+  minWidth: "24px",
   whiteSpace: "nowrap",
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  overflow: "hidden",
+  textOverflow: "ellipsis",
 };
 
 export const button = {
@@ -32,10 +32,10 @@ export const button = {
     backgroundColor: "#8D0E10",
   },
 
-  minWidth: '24px',
+  minWidth: "24px",
   whiteSpace: "nowrap",
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  overflow: "hidden",
+  textOverflow: "ellipsis",
 };
 
 // Icon-only Button
@@ -43,10 +43,10 @@ export const iconSelected = {
   backgroundColor: "#e3a314",
   padding: "10px",
   borderRadius: "12px",
-  minWidth: '24px',
+  minWidth: "24px",
   whiteSpace: "nowrap",
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  overflow: "hidden",
+  textOverflow: "ellipsis",
 };
 
 // Dropdown button
@@ -60,6 +60,7 @@ export const ddButton = {
   textTransform: "none",
   justifyContent: "start",
   padding: "12px 2.95rem",
+  width: "100%",
   "&:hover": {
     color: "white",
     backgroundColor: "transparent",

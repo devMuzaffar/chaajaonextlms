@@ -1,8 +1,11 @@
 import { Button } from "@mui/material";
 import { ddButton } from "../../../styles/materialButton";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const DropdownMenu = ({ isSelected, dropdownCondition, dropdownItems }) => {
+  const router = useRouter();
+
   // Selected Index for Dropdown Item
   const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -14,10 +17,27 @@ const DropdownMenu = ({ isSelected, dropdownCondition, dropdownItems }) => {
         : "border-b-2 border-transparent"
       : "border-b-2 border-transparent";
 
-  // Reserved for Routing
-  const selectDropdownItem = (index) => {
-    // isSelected ? setSelectedIndex(index) : setSelectedIndex(null)
-    console.log(isSelected);
+  // Dropdown Button onClick Route
+  const selectDropdownItem = (item,index) => {
+
+    // Remove space, lower case selected Item for route
+    const routeText = String(item).replace(" ", "-").toLowerCase();
+    // const highlightItem = isSelected ? setSelectedIndex(index) : setSelectedIndex(null);
+    
+    switch(routeText){
+      case "chat":
+        router.push('/chat');
+        break;
+      case "contact-us":
+        router.push('/contact-us');
+        break;
+      case "feedback":
+        router.push('/feedback');
+        break;
+      default:
+        break;
+    }
+
   };
 
   return (
@@ -30,7 +50,7 @@ const DropdownMenu = ({ isSelected, dropdownCondition, dropdownItems }) => {
             sx={ddButton}
             variant="text"
             onClick={() => {
-              selectDropdownItem(index);
+              selectDropdownItem(item,index);
             }}
           >
             <p className={dropDownButtonCondition(index)}>{item}</p>

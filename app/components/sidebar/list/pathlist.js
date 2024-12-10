@@ -5,10 +5,9 @@ const pathList = [
     "/news-ads",
     "/change-course",
     "/bookmarks",
-    "/personnal-notes",
+    "/personal-notes",
     "/analytics",
     "/support",
-    "/terms-conditions",
 ];
 
 export default pathList;
