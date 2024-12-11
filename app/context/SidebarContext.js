@@ -7,6 +7,9 @@ const SidebarProvider = ({ children }) => {
   const [isSidebarFixed, setIsSidebarFixed] = useState(false);
   const [isMobileSidebar, setIsMobileSidebar] = useState(false);
 
+  // A temp list of selected dropdown to remain persist highlighted in refreshing page
+  const [dropdownList, setDropdownList] = useState([]);
+
   return (
     <SidebarContext.Provider
       value={{
@@ -15,7 +18,9 @@ const SidebarProvider = ({ children }) => {
         isSidebarFixed,
         setIsSidebarFixed,
         isMobileSidebar,
-        setIsMobileSidebar
+        setIsMobileSidebar,
+        dropdownList,
+        setDropdownList,
       }}
     >
       {children}

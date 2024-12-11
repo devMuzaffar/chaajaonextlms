@@ -16,6 +16,8 @@ const Sidebar = () => {
     isSidebarFixed,
     isMobileSidebar,
     setIsMobileSidebar,
+
+    setDropdownList,
   } = useContext(SidebarContext);
 
   // State for Selecting Index button
@@ -80,7 +82,7 @@ const Sidebar = () => {
   };
 
   // Handle Navigation Function
-  const handleNavigation = (index) => {
+  const handleNavigation = (index, dropdownList) => {
     
     const selectIndex = setSelectedIndex(index);
 
@@ -113,14 +115,13 @@ const Sidebar = () => {
         selectIndex;
         router.push("/analytics");
         break;
-      case 8:
-        selectIndex;
-        // For Support
-      break;
       default:
-        selectIndex;
-        router.push("/");
+        // Navigating continously to home when switching dropdown buttons
+        // selectIndex;
+        // router.push("/");
     }
+
+    setDropdownList(dropdownList ? dropdownList : []);
   };
 
   // CSS for Most Parent Div
@@ -161,7 +162,7 @@ const Sidebar = () => {
                 text={text}
                 isSelected={selectedIndex === index}
                 onClick={() => {
-                  handleNavigation(index);
+                  handleNavigation(index, dropdown);
                 }}
                 hasDropDown={index === 1 || index === 8}
                 dropdownItems={selectedIndex === index ? dropdown : []}
