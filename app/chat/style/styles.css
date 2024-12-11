@@ -1,0 +1,16 @@
+.bg-header{
+    background-image: url('/assets/study-group/header-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: rgb(117, 14, 16);
+    height: 200px;
+}
+
+.bg-chat{
+    background-image: url('/assets/study-group/chat-bg.png');
+}
+
+.bg-chat-shade{
+    background: linear-gradient(0deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 20%, rgba(255,255,255,0.8) 100%);
+}

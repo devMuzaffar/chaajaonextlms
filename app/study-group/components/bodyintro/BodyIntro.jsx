@@ -10,7 +10,7 @@ const BodyIntro = () => {
   const openChatDrawer = () => setOpen(true);
 
   return (
-    <div className="absolute inset-0 flex flex-col justify-center items-center gap-5 text-gray-800 overflow-auto">
+    <div className="absolute inset-0 flex flex-col justify-center items-center gap-5 text-gray-800 overflow-auto select-none">
 
       {/* Chat App */}
       <div className="bg-white rounded-full h-36 w-36 flex items-center justify-center shadow-lg md:w-52 md:h-52">

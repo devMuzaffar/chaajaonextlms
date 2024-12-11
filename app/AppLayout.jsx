@@ -6,7 +6,7 @@ import SidebarProvider from "./context/SidebarContext";
 
 const AppLayout = ({ children }) => {
   return (
-    <div className="app flex justify-end relative bg-contentbg">
+    <div className="app flex justify-end relative bg-contentbg overflow-x-hidden">
       <SidebarProvider>
         <Sidebar />
 
