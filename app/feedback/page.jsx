@@ -16,14 +16,14 @@ const Feedback = () => {
       borderBottomColor: "#a11215",
     },
     "& .MuiInputLabel-root": {
-        fontSize: "14px",
-        lineHeight: "20px",
-        color: "black",
+      fontSize: "14px",
+      lineHeight: "20px",
+      color: "black",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-        fontSize: "14px",
-        lineHeight: "20px",
-        color: "#a11215",
+      fontSize: "14px",
+      lineHeight: "20px",
+      color: "#a11215",
     },
   });
 
