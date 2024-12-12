@@ -97,7 +97,7 @@ const Header = () => {
 
       {/* Right */}
       {/* Bell & Profile */}
-      <div className="flex items-center gap-1">
+      <div className="hidden items-center gap-1 xs:flex">
         {/* Notifications */}
         <div className="relative" onClick={openNotificationsMenu}>
           <IconButton sx={{ padding: "4px" }}>

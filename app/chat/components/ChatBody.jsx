@@ -37,7 +37,7 @@ const ChatBody = () => {
         {/* Input Field with Upload & Submit Button */}
         <div className="flex items-center pl-16 relative">
           <SpeedDial
-            sx={{ position: "absolute", left: "0", bottom: 0 }}
+            sx={{ position: "absolute", left: "0", bottom: 0, zIndex: "0" }}
             FabProps={{
               className: "!bg-primary hover:brightness-90 !shadow-sm",
             }}

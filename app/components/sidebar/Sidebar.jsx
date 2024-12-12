@@ -22,6 +22,7 @@ const Sidebar = () => {
 
   // State for Selecting Index button
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [container, setContainer] = useState(null);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -59,8 +60,7 @@ const Sidebar = () => {
     if (pathList.includes(pathname)) {
       const pathIndex = pathList.indexOf(pathname);
       setSelectedIndex(pathIndex);
-    }
-    else{
+    } else {
       setSelectedIndex(null);
     }
   }, [pathname]);
@@ -83,7 +83,6 @@ const Sidebar = () => {
 
   // Handle Navigation Function
   const handleNavigation = (index, dropdownList) => {
-    
     const selectIndex = setSelectedIndex(index);
 
     switch (index) {
@@ -116,9 +115,9 @@ const Sidebar = () => {
         router.push("/analytics");
         break;
       default:
-        // Navigating continously to home when switching dropdown buttons
-        // selectIndex;
-        // router.push("/");
+      // Navigating continously to home when switching dropdown buttons
+      // selectIndex;
+      // router.push("/");
     }
 
     setDropdownList(dropdownList ? dropdownList : []);
@@ -132,7 +131,11 @@ const Sidebar = () => {
   }`;
 
   return (
-    <div className={`${parentDiv} `} onClick={(e) => hideMobileSidebar(e)}>
+    <div
+      id="parent-container"
+      className={`${parentDiv} `}
+      onClick={(e) => hideMobileSidebar(e)}
+    >
       <div
         className={`h-screen border-none border-white overflow-y-hidden shadow-2xl lg:shadow-none ${
           isMobileWidth ? mobileSidebarPosition : sidebarPosition
@@ -165,7 +168,6 @@ const Sidebar = () => {
                   handleNavigation(index, dropdown);
                 }}
                 hasDropDown={index === 1 || index === 8}
-                dropdownItems={selectedIndex === index ? dropdown : []}
                 isSidebarFixed={false}
               />
             ))}

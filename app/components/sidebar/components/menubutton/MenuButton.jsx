@@ -14,7 +14,6 @@ const MenuButton = ({
   isSelected,
   onClick,
   hasDropDown,
-  dropdownItems,
   isSidebarFixed,
 }) => {
   // Sidebar Hover Context
@@ -67,7 +66,6 @@ const MenuButton = ({
         <DropdownMenu
           isSelected={isSelected}
           dropdownCondition={dropdownCondition}
-          dropdownItems={dropdownItems}
         />
       )}
     </div>

@@ -3,7 +3,7 @@ import ChatHeader from "../chatheader/ChatHeader";
 
 const ChatWindow = () => {
   return (
-    <div className="h-[calc(100vh-18vh)] rounded-xl overflow-hidden w-full bg-white flex">
+    <div id="chat-header" className="h-[calc(100vh-18vh)] rounded-xl overflow-hidden w-full bg-white flex relative">
 
       {/* Profile People Section */}
       <div className="flex-[2] hidden md:block">
@@ -12,6 +12,7 @@ const ChatWindow = () => {
 
         {/* People List */}
         <div className=""></div>
+
       </div>
 
       {/* Chat Body Section */}

@@ -5,7 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import pathList from "../../../list/pathlist";
 import { SidebarContext } from "@/app/context/SidebarContext";
 
-const DropdownMenu = ({ isSelected, dropdownCondition, dropdownItems }) => {
+const DropdownMenu = ({ isSelected, dropdownCondition }) => {
   const router = useRouter();
   const pathName = usePathname();
   const { dropdownList } = useContext(SidebarContext);

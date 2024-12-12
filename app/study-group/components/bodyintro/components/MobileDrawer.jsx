@@ -1,14 +1,12 @@
 "use client";
-import Drawer from "@mui/material/Drawer";
-import ChatHeader from "../../chatheader/ChatHeader";
-import { Box } from "@/node_modules/@mui/material/index";
+import { Box, SwipeableDrawer } from "@mui/material";
 import { useEffect, useState } from "react";
 
-const MobileDrawer = ({ open, setOpen }) => {
+const MobileDrawer = ({ open, setOpen, containerId, paperClass, children }) => {
   const [container, setContainer] = useState(null);
 
   useEffect(() => {
-    setContainer(document.getElementById('chat-body'));
+    setContainer(document.getElementById(containerId));
   }, []);
 
 
@@ -18,14 +16,16 @@ const MobileDrawer = ({ open, setOpen }) => {
 
   return (
     <Box style={{ position: 'relative' }}>
-      <Drawer
+      <SwipeableDrawer
         open={open}
         onClose={toggleDrawer(false)}
+        classes={{
+          paper: paperClass,
+        }}
         PaperProps={{
           container: container,
           style: {
             position: 'absolute',
-            maxWidth: 'initial',
             border: 'none',
             top: 0,
             left: 0,
@@ -44,8 +44,8 @@ const MobileDrawer = ({ open, setOpen }) => {
           }
         }}
       >
-        <ChatHeader />
-      </Drawer>
+        {children}
+      </SwipeableDrawer>
     </Box>
   );
 }

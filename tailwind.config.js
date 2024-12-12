@@ -25,7 +25,11 @@ module.exports = {
       },
       boxShadow: {
         headerbutton: "2px 2px 8px 0px rgba(31, 38, 71, 0.08)",
-      }
+      },
+      screens: {
+        xs: "376px",
+        xxs: "321px",
+      },
     },
   },
   plugins: [],
