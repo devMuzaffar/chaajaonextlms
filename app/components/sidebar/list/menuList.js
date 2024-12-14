@@ -6,6 +6,7 @@ const menuList = [
     dropdown: ["Chapter Tests", "Mock Tests", "Grand Test"],
   },
   { text: "Study Group", icon: "./assets/sidebar/icons/3.png" },
+  { text: "Questions Bank", icon: "./assets/sidebar/icons/10.png" },
   { text: "News & Ads", icon: "./assets/sidebar/icons/4.png" },
   { text: "Change Course", icon: "./assets/sidebar/icons/5.png" },
   { text: "Bookmarks", icon: "./assets/sidebar/icons/6.png" },
@@ -16,7 +17,6 @@ const menuList = [
     icon: "./assets/sidebar/icons/9.png",
     dropdown: ["Chat", "Contact Us", "Feedback"],
   },
-  { text: "Privacy & Policy T&C", icon: "./assets/sidebar/icons/10.png" },
   { text: "Log Out", icon: "./assets/sidebar/icons/11.png" },
 ];
 

@@ -2,8 +2,8 @@ import { Button } from "@mui/material";
 import { ddButton } from "../../../styles/materialButton";
 import { useContext, useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import pathList from "../../../list/pathlist";
 import { SidebarContext } from "@/app/context/SidebarContext";
+import { formatToPath, normalizedText } from "@/app/utils/helpers/stringUtils";
 
 const DropdownMenu = ({ isSelected, dropdownCondition }) => {
   const router = useRouter();
@@ -15,26 +15,29 @@ const DropdownMenu = ({ isSelected, dropdownCondition }) => {
 
   // de-highlights dropdown selected button upon changing routes
   // Persist highlighted button upon refreshing page
-  useEffect(() => {
-    if (pathList.includes(pathName)) {
-      setSelectedIndex(null);
-    } else {
-      // Method that scans and converts both pathName and Text to normalized form
-      // if normalized form both text matches, returns selected Index
-      // else -1
-      const matchedIndex = dropdownList.findIndex((text) => {
-        const convertedPath = pathName
-          .replace(/^\/+/, "")
-          .replace(/\s+/g, "-")
-          .toLowerCase();
-        const convertedText = text.toLowerCase().replace(" ", "-");
-        return convertedText === convertedPath;
-      });
+  const redacted = () => {
+    useEffect(() => {
 
-      // Sets Selected Index only if found to persist selection
-      setSelectedIndex(matchedIndex !== -1 ? matchedIndex : null);
-    }
-  }, [pathName, dropdownList]);
+
+      // TODO: REWRITE THIS CODE
+      if (pathList.includes(pathName)) {
+        setSelectedIndex(null);
+      } else {
+        // Method that scans and converts both pathName and Text to normalized form
+        // if normalized form both text matches, returns selected Index
+        // else -1
+        const matchedIndex = dropdownList.findIndex((text) => {
+          const convertedPath = normalizedText(pathName);
+          const convertedText = formatToPath(text);
+          return convertedText === convertedPath;
+        });
+  
+        // Sets Selected Index only if found to persist selection
+        setSelectedIndex(matchedIndex !== -1 ? matchedIndex : null);
+        
+      }
+    }, [pathName, dropdownList]);
+  }
 
   const dropDownButtonCondition = (index) =>
     selectedIndex === index
