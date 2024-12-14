@@ -1,7 +1,11 @@
 // Formats Route Path into Normalized Text
 // ex: "/contact-us" to "Contact Us"
 export const normalizedText = (pathName) => {
-  return pathName.replace(/^\/+/, "").replace(/\s+/g, "-").toLowerCase();
+  return pathName
+    .replace(/^\/+/, "")
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+    ;
 };
 
 // Formats Normalized Text to Route Path

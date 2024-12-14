@@ -10,7 +10,7 @@ const menuList = [
   { text: "News & Ads", icon: "./assets/sidebar/icons/4.png" },
   { text: "Change Course", icon: "./assets/sidebar/icons/5.png" },
   { text: "Bookmarks", icon: "./assets/sidebar/icons/6.png" },
-  { text: "Personnal Notes", icon: "./assets/sidebar/icons/7.png" },
+  { text: "Personal Notes", icon: "./assets/sidebar/icons/7.png" },
   { text: "Analytics", icon: "./assets/sidebar/icons/8.png" },
   {
     text: "Support",

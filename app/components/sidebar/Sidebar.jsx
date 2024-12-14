@@ -1,29 +1,30 @@
 "use client";
-import { useContext } from "react";
-import { SidebarContext } from "@/app/context/SidebarContext";
 import useViewportWidth from "./hooks/useViewportWidth";
-import DrawerDesktop from "./components/drawer/DrawerDesktop";
 import SidebarBody from "./components/sidebarbody/SidebarBody";
+import DrawerDesktop from "./components/drawer/DrawerDesktop";
+import MobileDrawer from "./components/drawer/MobileDrawer";
 
 const Sidebar = () => {
-  // Global sidebar Hover Boolean will be true/false on Hover
-  const { isSidebarHover, isSidebarFixed, isMobileSidebar } =
-    useContext(SidebarContext);
-
   // Custom Hook variable for current viewport width
   const currentWidth = useViewportWidth();
 
-  // Automatically hides sidebar on mobile if desktop's sidebar is minimized
-  const isMobileWidth = currentWidth < 1024;
+  return (
+    <div>
+      {/* Desktop Sidebar */}
+      <div className="hidden md:block">
+        <DrawerDesktop>
+          <SidebarBody />
+        </DrawerDesktop>
+      </div>
 
-
-  return <div>
-
-    <DrawerDesktop>
-        <SidebarBody />
-    </DrawerDesktop>
-
-  </div>;
+      {/* Mobile Sidebar */}
+      <div className="md:hidden">
+        <MobileDrawer>
+          <SidebarBody />
+        </MobileDrawer>
+      </div>
+    </div>
+  );
 };
 
 export default Sidebar;

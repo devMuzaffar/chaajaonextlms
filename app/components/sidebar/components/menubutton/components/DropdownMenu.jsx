@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { SidebarContext } from "@/app/context/SidebarContext";
 import { formatToPath, normalizedText } from "@/app/utils/helpers/stringUtils";
+import menuList from "../../../list/menuList";
 
 const DropdownMenu = ({ isSelected, dropdownCondition }) => {
   const router = useRouter();
@@ -15,29 +16,22 @@ const DropdownMenu = ({ isSelected, dropdownCondition }) => {
 
   // de-highlights dropdown selected button upon changing routes
   // Persist highlighted button upon refreshing page
-  const redacted = () => {
-    useEffect(() => {
+  useEffect(() => {
+    const currentPath = normalizedText(pathName);
 
-
-      // TODO: REWRITE THIS CODE
-      if (pathList.includes(pathName)) {
-        setSelectedIndex(null);
-      } else {
-        // Method that scans and converts both pathName and Text to normalized form
-        // if normalized form both text matches, returns selected Index
-        // else -1
-        const matchedIndex = dropdownList.findIndex((text) => {
-          const convertedPath = normalizedText(pathName);
-          const convertedText = formatToPath(text);
-          return convertedText === convertedPath;
-        });
-  
-        // Sets Selected Index only if found to persist selection
-        setSelectedIndex(matchedIndex !== -1 ? matchedIndex : null);
-        
+    menuList.forEach(({ dropdown }) => {
+      // If dropdown key exist?
+      if (dropdown) {
+        if (dropdownList.includes(currentPath)) {
+          const matchedIndex = dropdownList.findIndex(
+            (text) => text === currentPath
+          );
+          isSelected &&
+            setSelectedIndex(matchedIndex !== -1 ? matchedIndex : null);
+        }
       }
-    }, [pathName, dropdownList]);
-  }
+    });
+  }, [dropdownList]);
 
   const dropDownButtonCondition = (index) =>
     selectedIndex === index

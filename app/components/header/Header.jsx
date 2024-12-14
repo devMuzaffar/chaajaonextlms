@@ -53,7 +53,7 @@ const Header = () => {
 
   //  Toggles Sidebar on Mobile
   const toggleSidebar = () => {
-    setIsMobileSidebar(false);
+    setIsMobileSidebar(true);
   };
 
   return (
