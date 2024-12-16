@@ -5,7 +5,7 @@ import subjectList from "./list/subjectList";
 
 const QuestionsBank = () => {
   return (
-    <div className="border-2 border-red-500 flex flex-col px-2 gap-10 py-8">
+    <div className="flex flex-col px-2 gap-10 py-8">
       {/* Status List */}
       <div>
         {/* Title */}
@@ -29,8 +29,6 @@ const QuestionsBank = () => {
       <div className="w-full h-full">
         <Table />
       </div>
-
-
     </div>
   );
 };

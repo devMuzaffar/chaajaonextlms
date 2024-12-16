@@ -1,6 +1,12 @@
 const columnsConfig = [
   // ID
-  { field: "id", headerName: "#", sortable: false, flex: 0.2 },
+  {
+    field: "id",
+    headerName: "#",
+    sortable: false,
+    flex: 0.5,
+    minWidth: 50
+  },
 
   // Subject
   {
@@ -8,6 +14,7 @@ const columnsConfig = [
     headerName: "Subject",
     type: "number",
     flex: 1,
+    minWidth: 100
   },
 
   // Question Data
@@ -16,10 +23,17 @@ const columnsConfig = [
     sortable: false,
     headerName: "Question Data",
     flex: 1,
+    minWidth: 100
   },
 
   // Options
-  { field: "options", headerName: "Options", sortable: false, flex: 1 },
+  {
+    field: "options",
+    headerName: "Options",
+    sortable: false, 
+    flex: 1,
+    minWidth: 100
+  },
 
   // Chapter
   {
@@ -27,8 +41,9 @@ const columnsConfig = [
     headerName: "Chapter",
     description: "This column has a value getter and is not sortable.",
     sortable: false,
-    valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
+    // valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
     flex: 1,
+    minWidth: 100
   },
 
   // Topic
@@ -37,8 +52,9 @@ const columnsConfig = [
     headerName: "Topic",
     description: "This column has a value getter and is not sortable.",
     sortable: false,
-    valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
+    // valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
     flex: 1,
+    minWidth: 100
   },
 ];
 
