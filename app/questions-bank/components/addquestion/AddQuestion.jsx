@@ -12,17 +12,9 @@ import { FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
 import { Button } from "@mui/material/index";
 import { IconButton } from "@mui/material/index";
 import { IoMdClose } from "react-icons/io";
+import uiStyle from "@/app/styles/uiStyle";
 
-const formStyle = createTheme({
-  palette: {
-    primary: {
-      main: "#a11215",
-    },
-    secondary: {
-      main: "#e3a314",
-    },
-  },
-});
+const formStyle = createTheme(uiStyle);
 
 const AddQuestion = ({ open, setOpen }) => {
   const [subject, setSubject] = useState("");
