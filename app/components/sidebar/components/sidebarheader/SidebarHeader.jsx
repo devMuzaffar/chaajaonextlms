@@ -3,7 +3,8 @@ import MenuIcon from "../menuicon/MenuIcon";
 import { SidebarContext } from "@/app/context/SidebarContext";
 
 const SidebarHeader = () => {
-  const { isSidebarHover, setIsSidebarHover, isSidebarFixed,setIsSidebarFixed } = useContext(SidebarContext);
+  const { isSidebarHover, isSidebarFixed, setIsSidebarFixed } =
+    useContext(SidebarContext);
 
   // Changes Sidebar Position from Block to Fixed
   const toggleFixedSidebar = () => {
@@ -19,7 +20,7 @@ const SidebarHeader = () => {
           <img className="w-32 h-8" src="./assets/logo-text.png" alt="" />
         )}
       </div>
-      {isSidebarHover && (<MenuIcon onClick={toggleFixedSidebar} />)}
+      {isSidebarHover && <MenuIcon onClick={toggleFixedSidebar} />}
     </div>
   );
 };

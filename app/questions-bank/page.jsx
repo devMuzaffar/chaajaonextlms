@@ -1,9 +1,16 @@
+"use client";
+import { useState } from "react";
+import AddQuestion from "./components/addquestion/AddQuestion";
 import Button from "./components/button/Button";
 import StatsCard from "./components/statscard/StatsCard";
 import Table from "./components/table/Table";
 import subjectList from "./list/subjectList";
 
 const QuestionsBank = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => setIsOpen(true);
+
   return (
     <div className="flex flex-col px-2 gap-10 py-8">
       {/* Status List */}
@@ -20,10 +27,13 @@ const QuestionsBank = () => {
 
       {/* Buttons List */}
       <div className="grid items-center gap-4 sm:grid-cols-3 md:flex md:justify-end">
-        <Button>Add Question</Button>
+        <Button onClick={openModal}>Add Question</Button>
         <Button>Update</Button>
         <Button>Remove</Button>
       </div>
+
+      {/* Add Questions Modal */}
+      <AddQuestion open={isOpen} setOpen={setIsOpen}/>
 
       {/* Table */}
       <div className="w-full h-full">

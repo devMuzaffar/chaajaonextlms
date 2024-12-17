@@ -1,11 +1,22 @@
+import ActionButtons from "../../button/ActionButtons";
+
+// styling props
+// For simplifying styling
+const styleProps = ({ flex, minWidth, type, sortable } = {}) => {
+  return {
+    flex: flex || 1,
+    minWidth: minWidth || 100,
+    sortable: sortable ? true : false,
+    type: type || "string",
+  };
+};
+
 const columnsConfig = [
   // ID
   {
     field: "id",
     headerName: "#",
-    sortable: false,
-    flex: 0.5,
-    minWidth: 50
+    ...styleProps({ flex: 0.5, minWidth: 50, sortable: false }),
   },
 
   // Subject
@@ -13,48 +24,47 @@ const columnsConfig = [
     field: "subject",
     headerName: "Subject",
     type: "number",
-    flex: 1,
-    minWidth: 100
+    ...styleProps({ sortable: true }),
   },
 
   // Question Data
   {
     field: "questionData",
-    sortable: false,
     headerName: "Question Data",
-    flex: 1,
-    minWidth: 100
+    ...styleProps({ flex: 1 }),
   },
 
   // Options
   {
     field: "options",
     headerName: "Options",
-    sortable: false, 
-    flex: 1,
-    minWidth: 100
+    ...styleProps(),
   },
 
   // Chapter
   {
     field: "chapter",
     headerName: "Chapter",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
+    description: "Chapter of book",
+    ...styleProps(),
     // valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
-    flex: 1,
-    minWidth: 100
   },
 
   // Topic
   {
     field: "topic",
     headerName: "Topic",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
+    description: "Topic Number of Book",
+    ...styleProps(),
     // valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
-    flex: 1,
-    minWidth: 100
+  },
+
+  // Actions
+  {
+    field: "actions",
+    headerName: "Actions",
+    ...styleProps(),
+    renderCell: () => <ActionButtons />,
   },
 ];
 

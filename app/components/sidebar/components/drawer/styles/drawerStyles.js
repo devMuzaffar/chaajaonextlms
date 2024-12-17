@@ -12,6 +12,7 @@ const maximizedDrawerTheme = (theme) => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: "hidden",
+  borderRadius: "12px",
 });
 
 // Minimzed Theme
@@ -21,6 +22,7 @@ const minimizedDrawerTheme = (theme) => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: "hidden",
+  borderRadius: "12px",
   width: minWidth,
 });
 
@@ -34,6 +36,7 @@ export const Drawer = styled(MuiDrawer, {
   whiteSpace: "nowrap",
   boxSizing: "border-box",
   position: fixed ? "fixed" : "static",
+  zIndex: "999999",
   variants: [
     {
       props: ({ open }) => open,

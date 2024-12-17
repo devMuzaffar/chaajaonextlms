@@ -11,13 +11,13 @@ const MaterialIcon = ({ children }) => (
 
 // Main Component
 const MenuIcon = ({ onClick }) => {
-  const { setIsMobileSidebar, isMobileSidebar } = useContext(SidebarContext);
+  const { setIsMobileSidebar, isMobileSidebar, isSidebarFixed } = useContext(SidebarContext);
   const [isSelected, setIsSelected] = useState(false);
   const viewportWidth = useViewportWidth();
 
   const toggleButton = () => {
     // If Clicked on Desktop: Change Shape
-    if (viewportWidth > 1280) {
+    if (viewportWidth > 768) {
       onClick();
       setIsSelected(!isSelected);
     }
@@ -26,13 +26,14 @@ const MenuIcon = ({ onClick }) => {
     else {
       setIsMobileSidebar(!isMobileSidebar);
     }
+
   };
 
   return (
     <div onClick={toggleButton}>
       {/* Desktop Button Style */}
       <div className="hidden lg:block">
-        {isSelected ? (
+        {isSidebarFixed ? (
           <MaterialIcon>
             <MdOutlineMenu className="cursor-pointer" size={24} />
           </MaterialIcon>
@@ -49,6 +50,7 @@ const MenuIcon = ({ onClick }) => {
           <MdOutlineMenu className="cursor-pointer" size={24} />
         </MaterialIcon>
       </div>
+
     </div>
   );
 };

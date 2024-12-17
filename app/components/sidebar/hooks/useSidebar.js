@@ -1,7 +1,6 @@
 import {
   formatToPath,
   normalizedText,
-  removeSlashPath,
 } from "@/app/utils/helpers/stringUtils";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";

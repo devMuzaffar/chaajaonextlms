@@ -10,7 +10,6 @@ const DrawerDesktop = ({ children }) => {
 
   return (
     <Drawer variant="permanent" open={isSidebarHover} fixed={isSidebarFixed}>
-      {/* Your Component */}
       {children}
     </Drawer>
   );
