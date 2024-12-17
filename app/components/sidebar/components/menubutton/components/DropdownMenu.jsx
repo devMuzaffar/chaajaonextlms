@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
-import { ddButton } from "../../../styles/materialButton";
+import { ddButton } from "@/app/styles/materialButton";
 import { useContext, useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { SidebarContext } from "@/app/context/SidebarContext";
-import { formatToPath, normalizedText } from "@/app/utils/helpers/stringUtils";
+import { normalizedText } from "@/app/utils/helpers/stringUtils";
 import menuList from "../../../list/menuList";
 
 const DropdownMenu = ({ isSelected, dropdownCondition }) => {

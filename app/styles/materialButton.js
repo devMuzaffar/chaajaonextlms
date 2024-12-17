@@ -1,6 +1,10 @@
-// Material Button Styling
+import { primary, secondary, secondaryShade } from "../config/colors";
+
+// 
+// Selected Button Styling
+// 
 export const buttonSelected = {
-  backgroundColor: "#e3a314",
+  backgroundColor: secondary,
   padding: "10px",
   width: "100%",
   borderRadius: "12px",
@@ -10,13 +14,15 @@ export const buttonSelected = {
   textTransform: "none",
   fontSize: "14px",
   lineHeight: "20px",
-
   minWidth: "24px",
   whiteSpace: "nowrap",
   overflow: "hidden",
   textOverflow: "ellipsis",
 };
 
+// 
+// Un-selected Button Styling
+// 
 export const button = {
   padding: "10px",
   width: "100%",
@@ -29,18 +35,19 @@ export const button = {
   lineHeight: "20px",
   color: "white",
   "&:hover": {
-    backgroundColor: "#8D0E10",
+    backgroundColor: secondaryShade,
   },
-
   minWidth: "24px",
   whiteSpace: "nowrap",
   overflow: "hidden",
   textOverflow: "ellipsis",
 };
 
-// Icon-only Button
+// 
+// Icon-only Button Styling
+// 
 export const iconSelected = {
-  backgroundColor: "#e3a314",
+  backgroundColor: secondary,
   padding: "10px",
   borderRadius: "12px",
   minWidth: "24px",
@@ -49,11 +56,13 @@ export const iconSelected = {
   textOverflow: "ellipsis",
 };
 
-// Dropdown button
+// 
+// Dropdown button Styling
+// 
 export const ddButton = {
   fontSize: "14px",
   lineHeight: "20px",
-  color: "#DD9A9A",
+  color: "white",
   padding: "none",
   textDecoration: "none",
   fontFamily: "poppins",
@@ -66,4 +75,16 @@ export const ddButton = {
     backgroundColor: "transparent",
     fontWeight: "bold",
   },
+};
+
+// 
+// View All Button Styling
+// 
+export const viewAllButton = ({ hasOutline }) => {
+  return {
+    padding: "4px 12px",
+    borderRadius: "16px",
+    color: primary,
+    border: hasOutline ? `1px solid ${primary}` : "",
+  };
 };

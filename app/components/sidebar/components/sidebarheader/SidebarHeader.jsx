@@ -17,7 +17,7 @@ const SidebarHeader = () => {
       <div className="flex items-center gap-3">
         <img className="w-8" src="./assets/logo.png" alt="" />
         {isSidebarHover && (
-          <img className="w-32 h-8" src="./assets/logo-text.png" alt="" />
+          <img className="w-32 h-8 object-contain" src="./assets/logo-text.png" alt="" />
         )}
       </div>
       {isSidebarHover && <MenuIcon onClick={toggleFixedSidebar} />}

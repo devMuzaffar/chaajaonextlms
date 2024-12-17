@@ -1,17 +1,12 @@
-import { ButtonBase } from "@/node_modules/@mui/material/index";
+import { viewAllButton } from "@/app/styles/materialButton";
+import { ButtonBase } from "@mui/material";
 
 const ViewAllButton = ({ hasOutline }) => {
   const fontThick = hasOutline ? "font-medium" : "font-normal";
-  const border = hasOutline ? "1px solid #a11215" : "";
 
   return (
     <ButtonBase
-      sx={{
-        padding: "4px 12px",
-        borderRadius: "16px",
-        color: "#a11215",
-        border: border,
-      }}
+      sx={viewAllButton({ hasOutline })}
       className={`text-xs truncate font-normal ${fontThick}`}
     >
       View All

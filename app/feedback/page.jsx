@@ -1,31 +1,10 @@
 "use client";
 import { TextField, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import textFieldStyle from "../styles/textFieldStyle";
 
 const Feedback = () => {
-  const MuiTextField = styled(TextField)({
-    "& .MuiInputBase-input": {
-      fontSize: "14px",
-      lineHeight: "20px",
-      color: "#475569",
-    },
-    "& .MuiInput-underline:before": {
-      borderBottomColor: "#e2e8f0",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "#a11215",
-    },
-    "& .MuiInputLabel-root": {
-      fontSize: "14px",
-      lineHeight: "20px",
-      color: "black",
-    },
-    "& .MuiInputLabel-root.Mui-focused": {
-      fontSize: "14px",
-      lineHeight: "20px",
-      color: "#a11215",
-    },
-  });
+  const MuiTextField = styled(TextField)(textFieldStyle);
 
   return (
     <div className="px-4 py-12 flex flex-col gap-10">

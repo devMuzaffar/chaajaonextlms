@@ -2,7 +2,7 @@
 import { DataGrid } from "@mui/x-data-grid";
 import columnsConfig from "./utils/columns";
 import tableData from "./utils/tableData";
-import tableStyle from "./style/tableStyle";
+import tableStyle from "@/app/styles/tableStyle";
 import { ThemeProvider } from "@mui/material/styles";
 
 const paginationModel = { page: 0, pageSize: 5 };

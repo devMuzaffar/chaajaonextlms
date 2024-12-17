@@ -24,7 +24,7 @@ const SidebarBody = () => {
 
   return (
     <div
-      className={`bg-sidebar text-white h-full flex flex-col lg:border-2 lg:rounded-xl`}
+      className="bg-sidebar text-white h-full flex flex-col lg:border-2 lg:rounded-xl"
       onClick={stopPropagate}
       onMouseEnter={expandSidebar}
       onMouseLeave={minimizeSidebar}
