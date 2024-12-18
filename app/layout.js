@@ -7,7 +7,7 @@ import "@fontsource/roboto/700.css";
 import AppLayout from "./AppLayout";
 
 export const metadata = {
-  title: "Chaajao Dashboard",
+  title: "PTS Dashboard",
   description: "Dashboard for managing your studies",
 };
 

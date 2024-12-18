@@ -8,7 +8,7 @@ import "swiper/css";
 
 import SlidePrevButton from "./components/SlidePrevButton";
 import SlideNextButton from "./components/SlideNextButton";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import YoutubeCard from "./components/YoutubeCard";
 
 const swiperBreakpoints = {

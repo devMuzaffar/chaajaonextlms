@@ -16,6 +16,8 @@ const SidebarProvider = ({ children }) => {
   // Open/Closes Mobile Sidebar
   const [isMobileSidebar, setIsMobileSidebar] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <SidebarContext.Provider
       value={{
@@ -26,7 +28,9 @@ const SidebarProvider = ({ children }) => {
         isSidebarHover,
         setIsSidebarHover,
         isMobileSidebar,
-        setIsMobileSidebar
+        setIsMobileSidebar,
+        isLoading,
+        setIsLoading
       }}
     >
       {children}

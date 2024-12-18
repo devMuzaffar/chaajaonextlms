@@ -7,6 +7,7 @@ import DropdownMenu from "./components/DropdownMenu";
 import { counselorList, profileList } from "./list/dropDownList";
 import { useContext, useState } from "react";
 import { SidebarContext } from "@/app/context/SidebarContext";
+import { Menu, MenuItem } from "@/node_modules/@mui/material/index";
 
 const Header = () => {
   const [isButtonOpen, setIsButtonOpen] = useState(false);
@@ -56,6 +57,9 @@ const Header = () => {
     setIsMobileSidebar(true);
   };
 
+  const [counselorOpen, setCounselorOpen] = useState(null);
+  const anchorEl  = Boolean(counselorOpen);
+
   return (
     <div className="flex justify-between pt-4 px-2 pb-1">
       
@@ -83,14 +87,18 @@ const Header = () => {
               imgSrc={"./assets/header/counselor.svg"}
               text={"Talk to counselor"}
               onClick={openButtonMenu}
+              open={counselorOpen}
+              setOpen={() => { setCounselorOpen(true) }}
             />
 
             {/* Counselor dropdown Menu */}
-            <DropdownMenu
+            {/* <DropdownMenu
               list={counselorList}
               isOpen={isButtonOpen}
               className="w-full"
-            />
+            /> */}
+
+
           </div>
         </div>
       </div>
@@ -137,3 +145,7 @@ const Header = () => {
 };
 
 export default Header;
+
+
+// FIX COUNSELOR MENU
+// CHANGE DROPDOWN MENU TO MUI MENU

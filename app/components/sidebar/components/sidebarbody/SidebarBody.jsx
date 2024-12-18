@@ -6,7 +6,7 @@ import { SidebarContext } from "@/app/context/SidebarContext";
 import useSidebar from "../../hooks/useSidebar";
 
 const SidebarBody = () => {
-  const { setDropdownList, isSidebarFixed, setIsSidebarHover } =
+  const { setDropdownList, isSidebarFixed, setIsSidebarHover, setIsLoading } =
     useContext(SidebarContext);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -43,6 +43,7 @@ const SidebarBody = () => {
             isSelected={selectedIndex === index}
             onClick={() => {
               handleNavigation(index, text, dropdown);
+              setIsLoading(true);
             }}
             hasDropDown={
               text.includes("Practice Zone") || text.includes("Support")

@@ -14,10 +14,11 @@ const useSidebar = ({
 }) => {
   const router = useRouter();
   const pathname = usePathname();
+  let currentIndex = null;
 
   // UseEffect to persist selectedIndex path even when page is refreshed
   useEffect(() => {
-    const currentIndex = menuList.reduce((acc, { text }, index) => {
+    currentIndex = menuList.reduce((acc, { text }, index) => {
       const currentPath = normalizedText(pathname);
       const firstWord = text.substring(
         0,

@@ -39,6 +39,8 @@ const QuestionsBank = () => {
       <div className="w-full h-full">
         <Table />
       </div>
+
+      
     </div>
   );
 };
