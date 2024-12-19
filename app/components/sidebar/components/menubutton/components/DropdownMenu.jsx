@@ -9,7 +9,7 @@ import menuList from "../../../list/menuList";
 const DropdownMenu = ({ isSelected, dropdownCondition }) => {
   const router = useRouter();
   const pathName = usePathname();
-  const { dropdownList } = useContext(SidebarContext);
+  const { dropdownList, setIsLoading } = useContext(SidebarContext);
 
   // Selected Index for Dropdown Item
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -59,6 +59,7 @@ const DropdownMenu = ({ isSelected, dropdownCondition }) => {
             sx={ddButton}
             variant="text"
             onClick={() => {
+              setIsLoading(true);
               selectDropdownItem(item, index);
             }}
           >

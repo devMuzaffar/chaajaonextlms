@@ -16,7 +16,9 @@ const useSidebar = ({
   const pathname = usePathname();
   let currentIndex = null;
 
+  // 
   // UseEffect to persist selectedIndex path even when page is refreshed
+  // 
   useEffect(() => {
     currentIndex = menuList.reduce((acc, { text }, index) => {
       const currentPath = normalizedText(pathname);
@@ -39,8 +41,12 @@ const useSidebar = ({
     }
   }, [pathname]);
 
+  // 
   // Handle Navigation Function
+  // 
   const handleNavigation = (index, text, dropdownList) => {
+
+    // Sets Index
     setSelectedIndex(index);
 
     // Route to specific path only if has no dropdown List
@@ -58,6 +64,9 @@ const useSidebar = ({
     setDropdownList(dropdownList ? dropdownList : []);
   };
 
+  // 
+  // Dynamic Sidebar Methods
+  // 
   const expandSidebar = () => isSidebarFixed && setIsSidebarHover(true);
   const minimizeSidebar = () => isSidebarFixed && setIsSidebarHover(false);
 

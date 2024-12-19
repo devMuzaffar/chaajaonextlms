@@ -4,6 +4,7 @@ import { primary, secondary, secondaryShade } from "../config/colors";
 // Selected Button Styling
 // 
 export const buttonSelected = {
+  cursor: "auto",
   backgroundColor: secondary,
   padding: "10px",
   width: "100%",

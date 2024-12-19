@@ -1,32 +1,51 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { Menu, MenuItem } from "@mui/material/index";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
 
-const DropdownMenu = ({ list, isOpen, className }) => {
-  const motionInitial = { opacity: 0, scale: 0, originY: 0 };
-  const motionEnd = { opacity: 1, scale: 1, originY: 0 };
+const DropdownMenu = ({
+  anchorEl,
+  open,
+  setAnchorEl,
+  list,
+  className,
+  anchor,
+}) => {
+  const handleClose = () => setAnchorEl(null);
+
+  const menuClasses = {
+    paper: `!rounded-lg mt-2 ${className}`,
+  };
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={motionInitial}
-          animate={motionEnd}
-          exit={motionInitial}
-          transition={{ duration: 0.1 }}
-          className={`absolute transition-all bg-white my-1 py-2 rounded-xl shadow-lg shadow-gray-400 z-10 ${className}`}
-        >
-          {/* Item */}
-          {list.map((item, index) => (
-            <div
-              key={index}
-              className="transition-all cursor-pointer flex py-2 px-5 gap-3 items-center hover:bg-gray-100"
-            >
+    <Menu
+      autoFocus={false}
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: anchor ? anchor : "center",
+      }}
+      transformOrigin={{
+        vertical: "top",
+        horizontal: anchor ? anchor : "center",
+      }}
+      open={open}
+      onClose={handleClose}
+      classes={menuClasses}
+    >
+      {/* Item */}
+      {list.map((item, index) => (
+        <MenuItem key={index} onClick={handleClose}>
+          {item.icon && (
+            <ListItemIcon classes={{ root: "!text-gray-800" }}>
               {item.icon}
-              <p className="text-sm">{item.text}</p>
-            </div>
-          ))}
-        </motion.div>
-      )}
-    </AnimatePresence>
+            </ListItemIcon>
+          )}
+          <ListItemText>
+            <p className={`text-gray-800 ${className}`}>{item.text}</p>
+          </ListItemText>
+        </MenuItem>
+      ))}
+    </Menu>
   );
 };
 

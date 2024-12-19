@@ -7,62 +7,37 @@ import DropdownMenu from "./components/DropdownMenu";
 import { counselorList, profileList } from "./list/dropDownList";
 import { useContext, useState } from "react";
 import { SidebarContext } from "@/app/context/SidebarContext";
-import { Menu, MenuItem } from "@/node_modules/@mui/material/index";
 
 const Header = () => {
-  const [isButtonOpen, setIsButtonOpen] = useState(false);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  // Mobile Sidebar Button Context
   const { setIsMobileSidebar } = useContext(SidebarContext);
 
-  // Open Counselor Button Menu
-  // Closes other dropdowns Menus
-  const openButtonMenu = () => {
-    if (isProfileOpen || isNotificationsOpen) {
-      setIsProfileOpen(false);
-      setIsNotificationsOpen(false);
-      setIsButtonOpen(!isButtonOpen);
-    } else {
-      setIsButtonOpen(!isButtonOpen);
-    }
-  };
+  // Counselor States
+  const [counselorEl, setCounselorEl] = useState(null);
+  const open = Boolean(counselorEl);
 
-  // Open Profile Dropdown
-  // Close other Dropdowns if its open
-  const openProfileMenu = () => {
-    if (isButtonOpen || isNotificationsOpen) {
-      setIsButtonOpen(false);
-      setIsNotificationsOpen(false);
-      setIsProfileOpen(!isProfileOpen);
-    } else {
-      setIsProfileOpen(!isProfileOpen);
-    }
-  };
+  // Notification States
+  const [notifEl, setNotifEl] = useState(null);
+  const openNotif = Boolean(notifEl);
 
+  // Profile Avatar States
+  const [profileEl, setProfileEl] = useState(null);
+  const openProfile = Boolean(profileEl);
+
+  // Open Counselor Menu
+  const openCounselorMenu = (e) => setCounselorEl(e.currentTarget);
   // Open Notifications Menu
-  // Close other Dropdowns if its open
-  const openNotificationsMenu = () => {
-    setIsNotificationsOpen(!isNotificationsOpen);
-    if (isProfileOpen || isButtonOpen) {
-      setIsProfileOpen(false);
-      setIsButtonOpen(false);
-      setIsNotificationsOpen(!isNotificationsOpen);
-    } else {
-      setIsNotificationsOpen(!isNotificationsOpen);
-    }
-  };
+  const openNotificationsMenu = (e) => setNotifEl(e.currentTarget);
+  // Open Profile Menu
+  const openProfileMenu = (e) => setProfileEl(e.currentTarget);
 
   //  Toggles Sidebar on Mobile
   const toggleSidebar = () => {
     setIsMobileSidebar(true);
   };
 
-  const [counselorOpen, setCounselorOpen] = useState(null);
-  const anchorEl  = Boolean(counselorOpen);
-
   return (
     <div className="flex justify-between pt-4 px-2 pb-1">
-      
       {/* Left */}
       {/* Show Sidebar: Mobile */}
       {/* Buttons */}
@@ -82,23 +57,21 @@ const Header = () => {
           />
 
           {/* Talk to Counselor */}
-          <div className="relative select-none">
+          <div className="select-none relative">
             <Button
               imgSrc={"./assets/header/counselor.svg"}
               text={"Talk to counselor"}
-              onClick={openButtonMenu}
-              open={counselorOpen}
-              setOpen={() => { setCounselorOpen(true) }}
+              onClick={openCounselorMenu}
             />
 
             {/* Counselor dropdown Menu */}
-            {/* <DropdownMenu
+            <DropdownMenu
+              anchorEl={counselorEl}
+              setAnchorEl={setCounselorEl}
+              open={open}
               list={counselorList}
-              isOpen={isButtonOpen}
-              className="w-full"
-            /> */}
-
-
+              className="text-sm w-48 text-gray-600"
+            />
           </div>
         </div>
       </div>
@@ -107,21 +80,24 @@ const Header = () => {
       {/* Bell & Profile */}
       <div className="hidden items-center gap-1 xs:flex">
         {/* Notifications */}
-        <div className="relative" onClick={openNotificationsMenu}>
+        <div onClick={openNotificationsMenu}>
           <IconButton sx={{ padding: "4px" }}>
             <PiBellLight size={32} className="text-gray-600" />
           </IconButton>
-
-          {/* Notifications dropdown Menu */}
-          <DropdownMenu
-            list={[{ icon: "", text: "No notifications were found" }]}
-            isOpen={isNotificationsOpen}
-            className="right-0 w-72 font-bold"
-          />
         </div>
 
+        {/* Notifications dropdown Menu */}
+        <DropdownMenu
+          anchor="right"
+          anchorEl={notifEl}
+          setAnchorEl={setNotifEl}
+          open={openNotif}
+          list={[{ icon: "", text: "No notifications were found" }]}
+          className="font-bold"
+        />
+
         {/* Profile Icon */}
-        <div className="relative" onClick={openProfileMenu}>
+        <div onClick={openProfileMenu}>
           <ButtonBase
             sx={buttonBaseSx}
             className="transition-all hover:bg-slate-200"
@@ -131,21 +107,19 @@ const Header = () => {
               <p className="text-xl text-white font-semibold">M</p>
             </div>
           </ButtonBase>
-
-          {/* Profile dropdown Menu */}
-          <DropdownMenu
-            list={profileList}
-            isOpen={isProfileOpen}
-            className="right-0 w-40 font-semibold"
-          />
         </div>
+
+        {/* Profile dropdown Menu */}
+        <DropdownMenu
+          anchorEl={profileEl}
+          setAnchorEl={setProfileEl}
+          open={openProfile}
+          list={profileList}
+          className="font-semibold"
+        />
       </div>
     </div>
   );
 };
 
 export default Header;
-
-
-// FIX COUNSELOR MENU
-// CHANGE DROPDOWN MENU TO MUI MENU

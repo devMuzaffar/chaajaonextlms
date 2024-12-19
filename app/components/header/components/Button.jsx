@@ -1,11 +1,9 @@
-import { Menu, MenuItem } from "@mui/material/index";
-import { useState } from "react";
-
-const Button = ({ imgSrc, text, onClick, className, open, setOpen }) => {
+const Button = ({ imgSrc, text, onClick, className }) => {
   // onClick Event
-  const triggerAction = () => {
+  // Triggers Menu by Element current Target
+  const triggerAction = (event) => {
     if (onClick) {
-      onClick();
+      onClick(event);
     }
   };
 
@@ -19,17 +17,6 @@ const Button = ({ imgSrc, text, onClick, className, open, setOpen }) => {
         <img src={imgSrc} className="w-5" alt="" />
         <p className="text-slate-600 text-sm truncate">{text}</p>
       </div>
-
-      {/* Menu */}
-      <Menu
-        anchorEl={open}
-        open={open}
-        onClose={() => { setAnchorEl(false) }}
-      >
-        <MenuItem className="!text-sm !text-slate-500" onClick={() => { setAnchorEl(false) }}>
-          Add New Group
-        </MenuItem>
-      </Menu>
     </div>
   );
 };

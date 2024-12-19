@@ -7,19 +7,21 @@ import { SidebarContext } from "@/app/context/SidebarContext";
 
 const PageWrapper = ({ children }) => {
 
-  const {isLoading, setIsLoading } = useContext(SidebarContext);
+  const { dropdownList, isLoading, setIsLoading } = useContext(SidebarContext);
 
   const pathname = usePathname();
-
-  // Show Loading
-  const handleStart = () => setIsLoading(true);
 
   // Hide Loading
   const handleComplete = () => setIsLoading(false);
 
+  // useEffect - Hides Loading UI once Component is mounted
+  // Based on Pathname and dropdown List
   useEffect(() => {
-    return () => handleComplete();
-  }, [pathname]);
+
+    const timeoutId = setTimeout(handleComplete, 250);
+    return () => clearTimeout(timeoutId);
+    
+  }, [dropdownList, pathname]);
 
   return isLoading ? <LoadingComponent /> : <MotionWrap>{children}</MotionWrap>;
 };

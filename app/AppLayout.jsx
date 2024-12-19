@@ -1,13 +1,13 @@
 "use client";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Sidebar, Header } from "./components";
-import SidebarProvider, { SidebarContext } from "./context/SidebarContext";
+import SidebarProvider from "./context/SidebarContext";
 import Loading from "./components/loaders/Loading";
 import PageWrapper from "./components/wrappers/PageWrapper";
 
 // <SidebarProvider> for Show/Hide sidebar from both Sidebar & Header Component
 
-// Main Component is where all UI renders
+// Main Component - Renders Whole UI
 const MainComponent = ({ children }) => (
   <SidebarProvider>
     <Sidebar />
@@ -19,11 +19,13 @@ const MainComponent = ({ children }) => (
   </SidebarProvider>
 );
 
-// AppLayout Contains Suspense for Loading
+
 const AppLayout = ({ children }) => {
   const [isFirstTime, setIsFirstTime] = useState(true);
+
+  // Loading Timer
   useEffect(() => {
-    setTimeout(setIsFirstTime(false), 1000);
+    setTimeout(setIsFirstTime(false), 2000);
   }, []);
 
   return (
