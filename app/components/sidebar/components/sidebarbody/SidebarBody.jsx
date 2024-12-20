@@ -4,13 +4,11 @@ import SidebarHeader from "../sidebarheader/SidebarHeader";
 import { useContext, useState } from "react";
 import { SidebarContext } from "@/app/context/SidebarContext";
 import useSidebar from "../../hooks/useSidebar";
-import { usePathname } from "next/navigation";
 
 const SidebarBody = () => {
-  const { setDropdownList, isSidebarFixed, setIsSidebarHover, setIsLoading } =
+  const { setDropdownList, isSidebarFixed, setIsSidebarHover } =
     useContext(SidebarContext);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const pathname = usePathname();
 
   // Custom Hook to containing useful methods
   // This avoids cluttery
@@ -43,10 +41,7 @@ const SidebarBody = () => {
             icon={icon}
             text={text}
             isSelected={selectedIndex === index}
-            onClick={() => {
-                if(!dropdown && selectedIndex !== index) { setIsLoading(true); }
-                handleNavigation(index, text, dropdown);
-            }}
+            onClick={() => handleNavigation(index, text, dropdown)}
             hasDropDown={
               text.includes("Practice Zone") || text.includes("Support")
             }
