@@ -9,7 +9,7 @@ const MotionWrap = ({ children }) => {
 
   return (
     <motion.div
-      className="h-full w-full"
+      className="w-full h-4/5"
       key={pathname}
       initial={initial}
       animate={end}

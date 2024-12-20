@@ -28,7 +28,7 @@ const AppLayout = ({ children }) => {
   useDelay(() => setIsFirstTime(false), 250);
 
   return (
-    <div className="app flex justify-end relative bg-contentbg overflow-x-hidden">
+    <div className="app flex justify-end relative bg-contentbg overflow-x-hidden ">
       {isFirstTime ? (
         <Loading isMain={true} />
       ) : (
