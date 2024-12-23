@@ -22,6 +22,7 @@ const MenuButton = ({
   // state for show / hide Dropdown Menu
   const [dropDownVisibility, setDropDownVisibility] = useState(false);
 
+  // Condition to Show Highlighted Button or Simple Button
   const styleCondition =
     isSelected && !hasDropDown
       ? isSidebarHover
@@ -73,7 +74,4 @@ const MenuButton = ({
 };
 
 export default MenuButton;
-
-
-// TODO: When Clicked on dropdown button, previous SelectedIndex of button remains persist
 

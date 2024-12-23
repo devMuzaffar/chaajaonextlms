@@ -4,7 +4,7 @@ import {
 } from "@/app/utils/helpers/stringUtils";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import menuList from "../list/menuList";
+import menuList from "../../../list/menuList";
 
 const useSidebar = ({
   setDropdownList,
@@ -17,7 +17,7 @@ const useSidebar = ({
   let currentIndex = null;
 
   // 
-  // UseEffect to persist selectedIndex path even when page is refreshed
+  // UseEffect to stick selectedIndex path even when page is refreshed
   // 
   useEffect(() => {
     currentIndex = menuList.reduce((acc, { text }, index) => {
