@@ -1,4 +1,5 @@
-import subjectList from "@/app/questions-bank/list/subjectList";
+import subjectList from "../../../list/subjectList";
+
 import {
   FormControl,
   InputLabel,

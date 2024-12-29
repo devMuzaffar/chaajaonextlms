@@ -10,6 +10,7 @@ import SlidePrevButton from "./components/SlidePrevButton";
 import SlideNextButton from "./components/SlideNextButton";
 import { useRef } from "react";
 import YoutubeCard from "./components/YoutubeCard";
+import YTLinksID from "@/app/list/YTLinks";
 
 const swiperBreakpoints = {
   0: {
@@ -20,9 +21,6 @@ const swiperBreakpoints = {
   },
 };
 
-// Dummy Links
-const YTLinksID = ["zo5Z_BQTxoM", "FppXoImo-N4", "cQENdfxk3xo"];
-
 const Block4 = () => {
   // Ref hook for Swiper Navigation
   const swiperRef = useRef(null);
@@ -30,7 +28,7 @@ const Block4 = () => {
   return (
     <div className={blockStyle}>
       {/* Title */}
-      <Title>Chaajao Corner</Title>
+      <Title>Videos Corner</Title>
 
       {/* Content */}
       <div className="relative">

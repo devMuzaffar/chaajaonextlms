@@ -1,10 +1,7 @@
-import {
-  formatToPath,
-  normalizedText,
-} from "@/app/utils/helpers/stringUtils";
+import { formatToPath, normalizedText } from "@/app/utils/helpers/stringUtils";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import menuList from "../../../list/menuList";
+import menuList from "@/app/list/menuList";
 
 const useSidebar = ({
   setDropdownList,
@@ -16,9 +13,9 @@ const useSidebar = ({
   const pathname = usePathname();
   let currentIndex = null;
 
-  // 
-  // UseEffect to stick selectedIndex path even when page is refreshed
-  // 
+  //
+  // UseEffect to persist selectedIndex path even when page is refreshed
+  //
   useEffect(() => {
     currentIndex = menuList.reduce((acc, { text }, index) => {
       const currentPath = normalizedText(pathname);
@@ -41,11 +38,10 @@ const useSidebar = ({
     }
   }, [pathname]);
 
-  // 
+  //
   // Handle Navigation Function
-  // 
+  //
   const handleNavigation = (index, text, dropdownList) => {
-
     // Sets Index
     setSelectedIndex(index);
 
@@ -64,9 +60,9 @@ const useSidebar = ({
     setDropdownList(dropdownList ? dropdownList : []);
   };
 
-  // 
+  //
   // Dynamic Sidebar Methods
-  // 
+  //
   const expandSidebar = () => isSidebarFixed && setIsSidebarHover(true);
   const minimizeSidebar = () => isSidebarFixed && setIsSidebarHover(false);
 

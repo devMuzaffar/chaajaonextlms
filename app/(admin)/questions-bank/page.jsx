@@ -33,14 +33,12 @@ const QuestionsBank = () => {
       </div>
 
       {/* Add Questions Modal */}
-      <AddQuestion open={isOpen} setOpen={setIsOpen}/>
+      <AddQuestion open={isOpen} setOpen={setIsOpen} />
 
       {/* Table */}
       <div className="w-full h-full">
         <Table />
       </div>
-
-      
     </div>
   );
 };
