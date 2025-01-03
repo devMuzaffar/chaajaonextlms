@@ -7,6 +7,7 @@ import Table from "./components/table/Table";
 import subjectList from "./list/subjectList";
 
 const QuestionsBank = () => {
+  // Add Question Modal State
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => setIsOpen(true);
@@ -28,15 +29,13 @@ const QuestionsBank = () => {
       {/* Buttons List */}
       <div className="grid items-center gap-4 sm:grid-cols-3 md:flex md:justify-end">
         <Button onClick={openModal}>Add Question</Button>
-        <Button>Update</Button>
-        <Button>Remove</Button>
       </div>
 
       {/* Add Questions Modal */}
       <AddQuestion open={isOpen} setOpen={setIsOpen} />
 
       {/* Table */}
-      <div className="w-full h-full">
+      <div className="w-full h-full bg-white">
         <Table />
       </div>
     </div>
