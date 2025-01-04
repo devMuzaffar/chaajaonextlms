@@ -16,6 +16,8 @@
     "@mui/material": "^6.1.7",
     "@mui/material-nextjs": "^6.1.7",
     "@mui/x-data-grid": "^7.23.2",
+    "@mui/x-date-pickers": "^7.23.3",
+    "dayjs": "^1.11.13",
     "framer-motion": "^11.13.1",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",

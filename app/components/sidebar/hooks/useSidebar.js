@@ -35,6 +35,8 @@ const useSidebar = ({
       setSelectedIndex(null);
     } else {
       setSelectedIndex(currentIndex);
+      // Store current Index in local Storage for persistance on refresh
+      localStorage.setItem("current-index", currentIndex);
     }
   }, [pathname]);
 

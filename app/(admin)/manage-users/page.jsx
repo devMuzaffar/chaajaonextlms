@@ -10,7 +10,7 @@ const ManageUsers = () => {
   const openModal = () => setIsOpen(true);
 
   return (
-    <div className="flex flex-col px-2 gap-8 py-8">
+    <div className="flex flex-col px-2 gap-6 py-8">
       {/* Title */}
       <h2 className="font-semibold text-2xl px-2 pb-6">Manage Users</h2>
 
@@ -18,18 +18,19 @@ const ManageUsers = () => {
       <div className="space-y-4">
         {/* Add Button */}
         <div className="w-full flex justify-start md:justify-end">
-          <Button onClick={openModal}>Add User</Button>
+          <Button className="md:w-48" onClick={openModal}>
+            Add User
+          </Button>
         </div>
 
         {/* Table */}
-        <div className="w-full h-full">
+        <div className="w-full h-full bg-white">
           <UsersTable />
         </div>
       </div>
 
       {/* Add User Modal */}
-      <AddUser isOpen={isOpen} setOpen={openModal} />
-
+      <AddUser open={isOpen} setOpen={setIsOpen} />
     </div>
   );
 };

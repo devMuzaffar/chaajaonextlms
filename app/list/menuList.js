@@ -1,7 +1,8 @@
+let mode = true;
 let menuList;
 
 // If Admin ?
-true
+mode
   ? (menuList = [
       { text: "Home", icon: "./assets/sidebar/icons/1.png" },
       {
@@ -13,7 +14,6 @@ true
       { text: "Manage Users", icon: "./assets/sidebar/icons/3.png" },
       { text: "Payments", icon: "./assets/sidebar/icons/12.png" },
       { text: "News & Ads", icon: "./assets/sidebar/icons/4.png" },
-      { text: "Change Course", icon: "./assets/sidebar/icons/5.png" },
       { text: "Analytics", icon: "./assets/sidebar/icons/8.png" },
       {
         text: "Support",

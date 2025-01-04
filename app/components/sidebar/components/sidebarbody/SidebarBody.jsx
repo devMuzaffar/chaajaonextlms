@@ -8,7 +8,13 @@ import useSidebar from "../../hooks/useSidebar";
 const SidebarBody = () => {
   const { setDropdownList, isSidebarFixed, setIsSidebarHover } =
     useContext(SidebarContext);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  // Selected Index State
+  // Default is 0, if localStorage has value then currentIndex
+  const [selectedIndex, setSelectedIndex] = useState(() => {
+    const savedIndex = localStorage.getItem("current-index");
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
 
   // Custom Hook to containing useful methods
   // This avoids cluttery

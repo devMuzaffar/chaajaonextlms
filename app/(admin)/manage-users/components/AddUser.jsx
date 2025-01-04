@@ -11,43 +11,27 @@ import {
   MenuItem,
   Select,
   TextField,
+  Avatar,
 } from "@mui/material";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import Button from "./Button";
 
 const formStyle = createTheme(uiStyle);
 
 const AddUser = ({ open, setOpen }) => {
-  const [subject, setSubject] = useState("");
-  const [question, setQuestion] = useState("");
-  const [options, setOptions] = useState({
-    A: "",
-    B: "",
-    C: "",
-    D: "",
-  });
-  const [correctAnswer, setCorrectAnswer] = useState("");
+  const [program, setProgram] = useState("");
+  const [status, setStatus] = useState("");
 
-  // Handle Subject
-  const handleChange = (event) => {
-    setSubject(event.target.value);
+  // Handle Program
+  const handleChangeProgram = (event) => {
+    setProgram(event.target.value);
   };
 
-  // Handle Subject
-  const handleChangeQuestion = (event) => {
-    setQuestion(event.target.value);
-  };
-
-  // Handle Options
-  const handleChangeOptions = (event) => {
-    const { name, value } = event.target;
-    setOptions((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  //   Handle Correct Answer
-  const handleCorrectAnswer = (e) => {
-    setCorrectAnswer(e.target.value);
+  // Handle Status
+  const handleChangeStatus = (event) => {
+    setStatus(event.target.value);
   };
 
   return (
@@ -56,9 +40,7 @@ const AddUser = ({ open, setOpen }) => {
         <div className="flex flex-col gap-4 p-8">
           {/* Title Header */}
           <div className="flex justify-between">
-            <h2 className="text-xl text-gray-800 font-medium">
-              Add Your Question
-            </h2>
+            <h2 className="text-xl text-gray-800 font-medium">Add New User</h2>
             <div className="md:hidden" onClick={() => setOpen(false)}>
               <IconButton>
                 <IoMdClose size="24" />
@@ -66,53 +48,81 @@ const AddUser = ({ open, setOpen }) => {
             </div>
           </div>
 
-          {/* Form field */}
+          {/* Form fields */}
           <ThemeProvider theme={formStyle}>
-            <div className="w-full grid gap-6 sm:grid-cols-2">
-              {/* Block Left */}
-              <div className="flex flex-col gap-4">
-                {/* Subject Name */}
+            <div className="w-full flex gap-4 flex-col">
+              {/* Basic Info */}
+              <div className="grid grid-cols-2 gap-4">
+                {/* First Name & Last Name */}
+                <TextField
+                  fullWidth
+                  label="First Name"
+                  variant="outlined"
+                  // value={options[key]}
+                  // onChange={onChangeOptions}
+                />
+                <TextField fullWidth label="Last Name" variant="outlined" />
+              </div>
+
+              {/* Email */}
+              <TextField
+                fullWidth
+                label="Email"
+                variant="outlined"
+                type="email"
+              />
+
+              {/* Phone Number & Enrollment Date */}
+              <div className="flex gap-4">
+                <TextField
+                  fullWidth
+                  label="Phone Number"
+                  variant="outlined"
+                  type="number"
+                />
+
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker label="Enrollment Date" sx={{ width: "100%" }} />
+                </LocalizationProvider>
+              </div>
+
+              {/* Program & Status Select */}
+              <div className="grid gap-4 md:grid-cols-2">
                 <FormControl>
-                  <InputLabel id="demo-simple-select-label">Subject</InputLabel>
+                  <InputLabel id="select-program">Program</InputLabel>
                   <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={subject}
-                    label="Subject"
-                    // onChange={onChangeSubject}
+                    fullWidth
+                    id="select-program"
+                    value={program}
+                    label="Program"
+                    onChange={handleChangeProgram}
                   >
-                    <MenuItem value={0}>X</MenuItem>
+                    <MenuItem value="MDCAT">MDCAT</MenuItem>
+                    <MenuItem value="ECAT">ECAT</MenuItem>
+                    <MenuItem value="Intermediate">Intermediate</MenuItem>
+                    <MenuItem value="Matriculation">Matriculation</MenuItem>
                   </Select>
                 </FormControl>
 
-                {/* Question Data */}
-                <TextField
-                  label="Your Question"
-                  variant="outlined"
-                  minRows={3}
-                  multiline
-                  value={question}
-                  //   onChange={onChangeQuestion}
-                />
-
-                {/* Options */}
-                <div className="grid grid-cols-2 gap-4">
-                  {Object.keys(options).map((key) => (
-                    <TextField
-                      fullWidth
-                      key={key}
-                      label={`Option ${key}`}
-                      variant="outlined"
-                      name={key}
-                      value={options[key]}
-                      //   onChange={onChangeOptions}
-                    />
-                  ))}
-                </div>
+                <FormControl>
+                  <InputLabel id="select-status">Status</InputLabel>
+                  <Select
+                    fullWidth
+                    id="select-status"
+                    value={status === undefined ? "pending" : status}
+                    label="Status"
+                    onChange={handleChangeStatus}
+                  >
+                    <MenuItem value="Verified">Verified</MenuItem>
+                    <MenuItem value="Rejected">Rejected</MenuItem>
+                    <MenuItem value="Pending">Pending</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
 
-              {/* Block Right */}
-              {/* <BlockRight /> */}
+              <div className="w-full">
+                <Button className="w-full">Submit</Button>
+              </div>
             </div>
           </ThemeProvider>
         </div>

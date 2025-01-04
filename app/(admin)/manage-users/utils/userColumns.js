@@ -14,7 +14,6 @@ const styleProps = ({ flex, minWidth, type, sortable } = {}) => {
 };
 
 
-
 // 
 // User Columns Config
 // 
@@ -23,19 +22,23 @@ const userColumnsConfig = [
   {
     field: "id",
     headerName: "#",
-    ...styleProps({ flex: 0.5, minWidth: 50 }),
+    ...styleProps({ flex: 0.4, minWidth: 50 }),
   },
 
   // User Name
   {
-    field: "username",
+    field: "name",
     headerName: "User Name",
-    ...styleProps({ flex: 1.5, sortable: true }),
-    renderCell: ({value: {img, name, email}}) => <UserCard img={img} name={name} email={email}/>,
-    valueGetter: (value, rows) => {
-        return rows.username;
-    },
+    ...styleProps({ flex: 1, sortable: true }),
   },
+
+    // email
+    {
+      field: "email",
+      headerName: "Email",
+      ...styleProps({ flex: 1.3, sortable: true }),
+      valueGetter: (value) => (value.charAt(0).toUpperCase() + value.slice(1))
+    },
 
   // Contact
   {
@@ -63,7 +66,7 @@ const userColumnsConfig = [
   {
     field: "status",
     headerName: "Status",
-    ...styleProps({sortable: true}),
+    ...styleProps({flex: 0.8,sortable: true}),
     renderCell: (params) => <StatusCell status={params.value}/>
   },
 

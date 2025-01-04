@@ -16,11 +16,12 @@ const MainComponent = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Dummy Delay for Notification
-  useDelay(() => {setIsOpen(true)}, 2000);
+  useDelay(() => {
+    setIsOpen(true);
+  }, 2000);
 
   return (
     <SidebarProvider>
-
       {/* Notification */}
       <Notification
         isOpen={isOpen}
@@ -28,9 +29,8 @@ const MainComponent = ({ children }) => {
           setIsOpen(false);
         }}
         message="Admin Mode"
-        time={5000}
+        time={3000}
       />
-
 
       {/* Main UI */}
       <Sidebar />
