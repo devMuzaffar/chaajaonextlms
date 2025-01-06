@@ -13,7 +13,7 @@ const SidebarBody = () => {
   // Default is 0, if localStorage has value then currentIndex
   const [selectedIndex, setSelectedIndex] = useState(() => {
     const savedIndex = localStorage.getItem("current-index");
-    return savedIndex ? parseInt(savedIndex, 10) : 0;
+    return savedIndex ? +savedIndex : 0;
   });
 
   // Custom Hook to containing useful methods

@@ -17,6 +17,9 @@ const useSidebar = ({
   // UseEffect to persist selectedIndex path even when page is refreshed
   //
   useEffect(() => {
+    // this method Scans and finds first word matches from menu List
+    // Returns 0 if no match found
+    // Else it returns index Number
     currentIndex = menuList.reduce((acc, { text }, index) => {
       const currentPath = normalizedText(pathname);
       const firstWord = text.substring(
@@ -46,6 +49,7 @@ const useSidebar = ({
   const handleNavigation = (index, text, dropdownList) => {
     // Sets Index
     setSelectedIndex(index);
+    localStorage.setItem("current-index", index);
 
     // Route to specific path only if has no dropdown List
     const routeText = formatToPath(text);
